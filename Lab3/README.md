@@ -1,6 +1,6 @@
 # Lab3 - Word count in text
 
-The aim of this lab is to determine statistics on word occurences in a text (here Romeo & Juliet by Shakespeare) using a dictionary.
+The aim of this lab is to determine statistics on word occurences in a text (here _Romeo & Juliet_ by Shakespeare) using a dictionary.
 
 ## Built With
 
