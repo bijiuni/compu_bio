@@ -8,5 +8,5 @@ The aim of this lab is to determine statistics on word occurences in a text (her
 
 ## Authors
 
-* **Thomas Galeon** - *Initial work* - [TheGaga](https://github.com/TheGaga)
-* **Zach Lyu** - *Initial work* - [bijiuni](https://github.com/bijiuni)
+* **Thomas Galeon**  - [TheGaga](https://github.com/TheGaga)
+* **Zach Lyu** - [bijiuni](https://github.com/bijiuni)
