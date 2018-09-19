@@ -5,6 +5,7 @@ The aim of this lab is to investigate and document the relationships between sev
 We chose 3 pathways: Glycolysis, TCA cycle, and Pentose phosphate pathway.
 
 4 enzymes were chosen for each pathway using their Enzyme Commission number:
+
 | Pathway           | Enzyme 1 | Enzyme 2 | Enzyme 3 | Enzyme 4 |
 |-------------------|----------|----------|----------|----------|
 | Glycolysis        | 5.3.1.9  | 1.2.1.12 | 2.7.1.11 | 5.4.2.11 |
