@@ -4,13 +4,13 @@ The aim of this lab is to investigate and document the relationships between sev
 
 3 pathways were chosen: Glycolysis, TCA cycle, and Pentose phosphate pathway.
 
-4 enzymes were chosen for each pathway using their Enzyme Commission number:
+4 enzymes were chosen for each pathway using their Enzyme Commission number (note that we chose one repetitive enzyme 4.1.1.49 in Glycolysis and TCA cycle):
 
 | Pathway           | Enzyme 1 | Enzyme 2 | Enzyme 3 | Enzyme 4 |
 |-------------------|----------|----------|----------|----------|
-| Glycolysis        | 5.3.1.9  | 1.2.1.12 | 2.7.1.11 | 5.4.2.11 |
-| TCA cycle         | 1.2.4.1  | 4.2.1.3  | 6.2.1.5  | 2.3.1.61 |
-| Pentose Phosphate | 3.1.3.11 | 1.1.1.49 | 1.1.1.44 | 5.4.2.7  |
+| Glycolysis        | 4.1.1.49  | 5.3.1.9 | 5.4.2.2 | 1.8.1.4 |
+| TCA cycle         | 4.1.1.31|6.2.1.4|1.1.5.4|4.1.1.49|
+| Pentose Phosphate | 3.1.3.11|2.7.1.15|3.1.1.31|5.4.2.7|
 
 3 organisms were investigated: homo sapiens, drosophilia melanogaster (fruit fly), and escherichia coli K-12 MG1655
 
@@ -18,7 +18,7 @@ The aim of this lab is to investigate and document the relationships between sev
 ## Database design
 
 ### Genes Table
-In this table we save the information of 4*3*3=36 genes.
+In this table we save the information of 4* 3 * 3 =36 genes.
 ```
 Fields: id, name, description, organism, sequence
 ```
@@ -28,7 +28,7 @@ In this table we save the information of 3 pathways. The description for each of
 Fields: id, name, description
 ```
 ### Enzymes table
-In this table we save the information of 4*3*3=36 enzymes.
+In this table we save the information of 11 enzymes (4 * 3 - 1 repetitive). Note that we chose EC number to be the primary key.
 ```
 Fields: id, name, description, EC
 ```
