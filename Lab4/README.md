@@ -1,9 +1,14 @@
 # Lab4 - SQL Database
 
-The aim of this lab is to investigate and document the relationships between several genes, enzymes and pathways.
+The aim of this lab is to investigate and document the relationships between several genes, enzymes and pathways. The data collection process is fully automated using Entrez.
 
 We chose three pathways: Glycolysis, TCA cycle, and Pentose phosphate pathway.
+
 Four enzymes for each pathway:
+* Glycolysis: 5.3.1.9, 2.7.1.11, 1.2.1.12, 5.4.2.11
+* TCA cycle: 1.2.4.1, 4.2.1.3, 6.2.1.5, 2.3.1.61
+* Pentose Phosphate: 3.1.3.11, 1.1.1.49, 1.1.1.44, 5.4.2.7
+
 Three organism: homo sapiens, drosophilia melanogaster (fruit fly), and escherichia coli K-12 MG1655
 
 
@@ -15,7 +20,7 @@ In this table we save the information of 4*3*3=36 genes.
 Fields: id, name, description, organism, sequence
 ```
 ### Pathways table
-In this table we save the information of 3 pathways.
+In this table we save the information of 3 pathways. The description for each of these pathways was found on the [KEGG website](https://www.genome.jp/kegg/pathway.html)
 ```
 Fields: id, name, description
 ```
@@ -24,6 +29,7 @@ In this table we save the information of 4*3*3=36 enzymes.
 ```
 Fields: id, name, description, EC
 ```
+
 
 
 We designed two associative tables.
@@ -42,10 +48,14 @@ Fields: id, ec, organism, gene
 
 ## Implementation
 
-All process except the description of pathways is automated in this lab. If you want to investigate other enzymes, you can simply
-edit the enzyme list at the top of the ipython file.
+All processes except for the description of pathways are fully automated in this lab. To investigate other enzymes, simply edit the enzyme list at the top of the ipython file.
 
 Entrez is the database mainly used in this lab and the most relevant result is returned in each case.
+
+If this document does not compile with your default data rate limit, open jupyter notebook using the following command:
+```
+jupyter notebook --NotebookApp.iopub_data_rate_limit=10000000000
+```
 
 ## Built With
 
