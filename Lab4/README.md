@@ -2,14 +2,14 @@
 
 The aim of this lab is to investigate and document the relationships between several genes, enzymes and pathways. The data collection process is fully automated using Entrez.
 
-We chose three pathways: Glycolysis, TCA cycle, and Pentose phosphate pathway.
+We chose 3 pathways: Glycolysis, TCA cycle, and Pentose phosphate pathway.
 
-Four enzymes for each pathway:
-* Glycolysis: 5.3.1.9, 2.7.1.11, 1.2.1.12, 5.4.2.11
-* TCA cycle: 1.2.4.1, 4.2.1.3, 6.2.1.5, 2.3.1.61
-* Pentose Phosphate: 3.1.3.11, 1.1.1.49, 1.1.1.44, 5.4.2.7
+4 enzymes were chosen for each pathway using their Enzyme Commission number:
+* Glycolysis:         5.3.1.9    2.7.1.11     1.2.1.12    5.4.2.11
+* TCA cycle:          1.2.4.1    4.2.1.3      6.2.1.5     2.3.1.61
+* Pentose Phosphate:  3.1.3.11   1.1.1.49     1.1.1.44    5.4.2.7
 
-Three organism: homo sapiens, drosophilia melanogaster (fruit fly), and escherichia coli K-12 MG1655
+3 organisms: homo sapiens, drosophilia melanogaster (fruit fly), and escherichia coli K-12 MG1655
 
 
 ## Database design
