@@ -2,11 +2,14 @@
 
 ## Overview
 
-The aim of this lab is to run RNAfold package to obtain secondary structures of folded RNA. The inputs are nucleic sequences and possibly constraints. All sequences and riboswitch scenarios were obatined from the paper by Penchovsky and	Breaker.
+The aim of this lab is to run RNAfold package to obtain secondary structures of folded RNA.
+The inputs are nucleic sequences and possibly constraints. All sequences and riboswitch scenarios were obatined from the paper written 
+by Penchovsky and	Breaker.
 
 ## Understanding the Paper
 
-Will	the	AND-1	riboswitch	cleave	itself	when	both	of	its	OBS	are	bound?
+*Q* Will	the	AND-1	riboswitch	cleave	itself	when	both	of	its	OBS	are	bound?
+Yes it will.
 
 
 Will	the	OR-1	riboswitch	cleave	itself	when	neither	of	its	OBS	are	bound?
