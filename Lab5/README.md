@@ -1,4 +1,25 @@
-# Lab5
+# Lab5 RNAfold and Riboswitches
+
+## Overview
+
+The aim of this lab is to run RNAfold package to obtain secondary structures of folded RNA. The inputs are nucleic sequences and possibly constraints. All sequences and riboswitch scenarios were obatined from the paper by Penchovsky and	Breaker.
+
+## Understanding the Paper
+
+Will	the	AND-1	riboswitch	cleave	itself	when	both	of	its	OBS	are	bound?
+
+
+Will	the	OR-1	riboswitch	cleave	itself	when	neither	of	its	OBS	are	bound?
+
+
+What	behavior	do	we	expect	from	the	YES-1	riboswitch?
+
+
+## Grabbing the Sequences
+
+All information is summarized into the table below:
+
+
 
 YES-1: (Figure 2a)
 ```
