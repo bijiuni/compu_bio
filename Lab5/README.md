@@ -120,7 +120,7 @@ In order to keep the outside conditions unchanged, we used default temperature p
 
 <br>
 
-### (2) OBS binding to YES-1 and NO-1
+### (2) OBS binding to YES-1 and NOT-1
 
 To automate the constraint generating process, and since the OBS positions have already been identified in the beginning of this lab, we use the following code as a template to simulate RNA folding in all binding conditions.
 
