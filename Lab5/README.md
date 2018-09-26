@@ -6,7 +6,7 @@ The aim of this lab is to run RNAfold package to obtain secondary structures of 
 The inputs are nucleic sequences and possibly constraints. All sequences and riboswitch scenarios were obatined from the paper written 
 by Penchovsky and	Breaker.
 
-
+<br><br>
 ## Understanding the Paper
 
 **_Q:_** Will	the	AND-1	riboswitch	cleave	itself	when	both	of	its	OBS	are	bound?
@@ -24,7 +24,7 @@ by Penchovsky and	Breaker.
 
 If the OBS is not bound, that means the input of the YES gate is **FALSE**. The output should be **FALSE** as well. The riboswitch does not cleave itself.
 
-
+<br><br>
 ## Grabbing the Sequences
 
 All information obtained from the sequence is summarized into the table below:
@@ -36,7 +36,7 @@ All information obtained from the sequence is summarized into the table below:
 |   AND-1 |30|45|49|64|16|23|70|77|GGGCGACCCUGAUGAGCUUGGUUUAGUAUUUACAGCUCCAUACAUGAGGUGUUAUCCCUAUGCAAGUUCGAUCAGGCGAAACGGUGAAAGCCGUAGGUUGCCCAGAGACAAU|
 |OR-1 |27|46|47|66|16|26|67|77|GGGCGACCCUGAUGAGCUUGGUUGAGUAUUUACAGCUCCAUACAUGAGGUGUUCUCCCUACGCAAGUUCGAUCAGGCGAAACGGUGAAAGCCGUAGGUUGCCC|
 
-
+<br><br>
 ## Routine to fold RNA
 
 The developed routine is shown below. We first import subprocess. When calling subprocess, we simply call the RNAfold function and use
