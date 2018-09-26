@@ -10,13 +10,16 @@ by Penchovsky and	Breaker.
 ## Understanding the Paper
 
 **_Q:_** Will	the	AND-1	riboswitch	cleave	itself	when	both	of	its	OBS	are	bound?
+
 **_A:_** Yes it will. If both OBS are bound, that means both the inputs to the AND gate are **TRUE**. The output should therefore be **TRUE**. The regions resposible of self-cleavage are aligned and bound to each other. The riboswitch will cleave itself.
 
 
 **_Q:_** Will	the	OR-1	riboswitch	cleave	itself	when	neither	of	its	OBS	are	bound?
+
 **_A:_** No it won't. If neither of the OBS are bound, that means both the inputs to the OR gate are **FALSE**. The output should therefore be **FALSE**. The regions resposible of self-cleavage are not exactly bound to each other. The riboswitch will not cleave itself.
 
 **_Q:_** What	behavior	do	we	expect	from	the	YES-1	riboswitch?
+
 **_A:_** If the OBS is bound, that means the input of the YES gate is **TRUE**. The output should be **TRUE** as well. The riboswitch cleaves itself.
 
 If the OBS is not bound, that means the input of the YES gate is **FALSE**. The output should be **FALSE** as well. The riboswitch does not cleave itself.
@@ -25,18 +28,20 @@ If the OBS is not bound, that means the input of the YES gate is **FALSE**. The 
 ## Grabbing the Sequences
 
 All information obtained from the sequence is summarized into the table below:
+
 | Riboswitch name | Start OBS-1  | End OBS-1 | Start OBS-2 | End OBS-2 | Start red1 | End red1 | Start red2 | Snd red2 |Sequence|
 |------|------|------|------|------|------|------|------|
 |   YES-1 | 26|47|N/A|N/A|16|21|49|54|GGGCGACCCUGAUGAGCUUGAGUUUAGCUCGUCACUGUCCAGGUUCAAUCAGGCGAAACGGUGAAAGCCGUAGGUUGCCC|
 |   NOT-1  | 44|66|N/A|N/A|40|43| 74|77|GGCAGGUACAUACAGCUGAUGAGUCCCAAAUAGGACGAAACGCGACACACACCACUAAACCGUGCAGUGUUUUGCGUCCUGUAUUCCACUGC|
 |   AND-1 |30|45|49|64|16|23|70|77|GGGCGACCCUGAUGAGCUUGGUUUAGUAUUUACAGCUCCAUACAUGAGGUGUUAUCCCUAUGCAAGUUCGAUCAGGCGAAACGGUGAAAGCCGUAGGUUGCCCAGAGACAAU|
-|   OR-1 |27|46|47|66|16|26|67|77|GGGCGACCCUGAUGAGCUUGGUUGAGUAUUUACAGCUCCAUACAUGAGGUGUUCUCCCUACGCAAGUUCGAUCAGGCGAAACGGUGAAAGCCGUAGGUUGCCC|
+|OR-1 |27|46|47|66|16|26|67|77|GGGCGACCCUGAUGAGCUUGGUUGAGUAUUUACAGCUCCAUACAUGAGGUGUUCUCCCUACGCAAGUUCGAUCAGGCGAAACGGUGAAAGCCGUAGGUUGCCC|
 
 
 ## Routine to fold RNA
 
 The developed routine is shown below. We first import subprocess. When calling subprocess, we simply call the RNAfold function and use
 the sequences as input in the form of ASCII characters. Terminal output and outputfile are implemented seperately.
+
 ```
 import subprocess
 seqs = \
@@ -67,7 +72,7 @@ print(p.stdout.decode())
 
 ## The meat of the assignment
 
-## (1) Default parameters and the effect of temperature
+### (1) Default parameters and the effect of temperature
 
 With default parameters (please see ipython file for detailed codes), we obtained the following configurations.
 
@@ -103,7 +108,8 @@ p = subprocess.run(['RNAfold', '--temp=5'],
                   stderr=subprocess.PIPE)
 ```
 
-## (2) OBS binding in YES-1 and NO-1
+
+### (2) OBS binding in YES-1 and NO-1
 
 To automate the constraint generating process, and since the OBS positions have already been identified in the beginning of this lab, we use the following code as a template to simulate RNA folding in all binding conditions.
 
@@ -129,7 +135,9 @@ p = subprocess.run(['RNAfold', '-C'],
                       stdout=subprocess.PIPE,
                       stderr=subprocess.PIPE) 
 ```
+
 The codes are self-explanatory. The input is the sequence of the RNA followed by the '.x' constraint. With the -C parameters added, the RNAfold function will generate the RNA folding configurations in the constraint conditions.
+
 
 
 Here are the results:
@@ -155,7 +163,9 @@ GGCAGGUACAUACAGCUGAUGAGUCCCAAAUAGGACGAAACGCGACACACACCACUAAACCGUGCAGUGUUUUGCGUCCU
 
 **Discussion:** For yes-1 riboswitch, the RNA configurations are exactly the same with and without constraint. If the OBS is bound, that means the input of the YES gate is **TRUE**. The output is **TRUE** as well. The riboswitch cleaves itself. If the OBS is not bound, that means the input of the YES gate is **FALSE**. The output is **FALSE** as well. The riboswitch does not cleave itself. We therefore can generate the truth table as below.
 
+
 #### YES-1 truth table
+
 
 |Input|Output|
 |------|------|
@@ -165,7 +175,9 @@ GGCAGGUACAUACAGCUGAUGAGUCCCAAAUAGGACGAAACGCGACACACACCACUAAACCGUGCAGUGUUUUGCGUCCU
 
 for not-1 riboswitch, the RNA folding result without constraint is the same with the paper as previously showed. However, when it comes to constraint case, a pair of GU and a pair of CG are missing at position 42-43, 67-68. Despite this, the two red regions are still not aligned, and the output is still **FALSE**. We therefore can generate the truth table as below.
 
+
 #### NOT-1 truth table
+
 
 |Input|Output|
 |------|------|
@@ -173,12 +185,13 @@ for not-1 riboswitch, the RNA folding result without constraint is the same with
 |1|0|
 
 
-## (2) OBS binding in AND-1 and OR-1
+### (3) OBS binding in AND-1 and OR-1
 
 Using the same template and parameters (detailed codes please see the ipython file), we generated the RNA folding of AND-1 and OR-1 in T/F, F/T, and T/T situations respectively. Here are the results:
 
 #### AND-1 OBS-1 bound alone
 
+>AND-1_TF
 GGGCGACCCUGAUGAGCUUGGUUUAGUAUUUACAGCUCCAUACAUGAGGUGUUAUCCCUAUGCAAGUUCGAUCAGGCGAAACGGUGAAAGCCGUAGGUUGCCCAGAGACAAU
 ((((((((((((((((((((..........................(((.(....))))...))))))).))))).....(((((....))))).))))))))......... (-33.90)
 
@@ -187,6 +200,7 @@ GGGCGACCCUGAUGAGCUUGGUUUAGUAUUUACAGCUCCAUACAUGAGGUGUUAUCCCUAUGCAAGUUCGAUCAGGCGAA
 
 ##### AND-1 OBS-2 bound alone
 
+>AND-1_FT
 GGGCGACCCUGAUGAGCUUGGUUUAGUAUUUACAGCUCCAUACAUGAGGUGUUAUCCCUAUGCAAGUUCGAUCAGGCGAAACGGUGAAAGCCGUAGGUUGCCCAGAGACAAU
 ((((((((((.(((....(((...(((.......))))))..))).))..................((((......))))(((((....))))).))))))))......... (-28.30)
 
@@ -195,6 +209,7 @@ GGGCGACCCUGAUGAGCUUGGUUUAGUAUUUACAGCUCCAUACAUGAGGUGUUAUCCCUAUGCAAGUUCGAUCAGGCGAA
 
 ##### AND-1 OBS-1 and OBS-2 both bound
 
+>AND-1_TT
 GGGCGACCCUGAUGAGCUUGGUUUAGUAUUUACAGCUCCAUACAUGAGGUGUUAUCCCUAUGCAAGUUCGAUCAGGCGAAACGGUGAAAGCCGUAGGUUGCCCAGAGACAAU
 (((((((((((((((((................................................)))).))))).....(((((....))))).))))))))......... (-26.30)
 
@@ -211,9 +226,10 @@ TT: Exactly the same with the paper. Both blue areas are bound, the red areas ar
 
 We therefore can generate the truth table as below.
 
+
 #### AND-1 truth table
 
-|Input 1||Input 2|Output|
+|Input 1|Input 2|Output|
 |------|------|------|
 |0|0|0|
 |1|0|0|
@@ -221,8 +237,11 @@ We therefore can generate the truth table as below.
 |1|1|1|
 
 
+
+
 #### OR-1 OBS-1 bound alone
 
+>OR-1_TF
 GGGCGACCCUGAUGAGCUUGGUUGAGUAUUUACAGCUCCAUACAUGAGGUGUUCUCCCUACGCAAGUUCGAUCAGGCGAAACGGUGAAAGCCGUAGGUUGCCC
 ((((((((((((((((((((((.(((...........................)))...)).))))))).))))).....(((((....))))).)))))))) (-34.20)
 
@@ -231,6 +250,7 @@ GGGCGACCCUGAUGAGCUUGGUUGAGUAUUUACAGCUCCAUACAUGAGGUGUUCUCCCUACGCAAGUUCGAUCAGGCGAA
 
 ##### OR-1 OBS-2 bound alone
 
+>OR-1_FT
 GGGCGACCCUGAUGAGCUUGGUUGAGUAUUUACAGCUCCAUACAUGAGGUGUUCUCCCUACGCAAGUUCGAUCAGGCGAAACGGUGAAAGCCGUAGGUUGCCC
 ((((((((.......((((((((((..........................................))))))))))...(((((....))))).)))))))) (-28.84)
 
@@ -239,6 +259,7 @@ GGGCGACCCUGAUGAGCUUGGUUGAGUAUUUACAGCUCCAUACAUGAGGUGUUCUCCCUACGCAAGUUCGAUCAGGCGAA
 
 ##### OR-1 OBS-1 and OBS-2 both bound
 
+>OR-1_TT
 GGGCGACCCUGAUGAGCUUGGUUGAGUAUUUACAGCUCCAUACAUGAGGUGUUCUCCCUACGCAAGUUCGAUCAGGCGAAACGGUGAAAGCCGUAGGUUGCCC
 ((((((((.......((((((((((..........................................))))))))))...(((((....))))).)))))))) (-28.84)
 
@@ -257,12 +278,13 @@ We therefore can generate the truth table as below.
 
 #### OR-1 truth table
 
-|Input 1||Input 2|Output|
+|Input 1|Input 2|Output|
 |------|------|------|
 |0|0|0|
 |1|0|0|
 |0|1|0|
 |1|1|1|
+
 
 
 ## Final Question: According to your results, do the riboswitches work as the paper claims?
