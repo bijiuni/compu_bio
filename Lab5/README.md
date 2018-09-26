@@ -84,7 +84,7 @@ With default parameters (please see ipython file for detailed codes), we obtaine
 
 ##### YES-1
 
-<img src=\"IMG/YES-1_ss.png\" width=\"300\">
+<img src="IMG/YES-1_ss.png" width="300/">
 
 
 ##### NOT-1
