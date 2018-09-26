@@ -30,7 +30,7 @@ If the OBS is not bound, that means the input of the YES gate is **FALSE**. The 
 All information obtained from the sequence is summarized into the table below:
 
 | Riboswitch name | Start OBS-1  | End OBS-1 | Start OBS-2 | End OBS-2 | Start red1 | End red1 | Start red2 | Snd red2 |Sequence|
-|------|------|------|------|------|------|------|------|
+|------|------|------|------|------|------|------|------|------|------|
 |   YES-1 | 26|47|N/A|N/A|16|21|49|54|GGGCGACCCUGAUGAGCUUGAGUUUAGCUCGUCACUGUCCAGGUUCAAUCAGGCGAAACGGUGAAAGCCGUAGGUUGCCC|
 |   NOT-1  | 44|66|N/A|N/A|40|43| 74|77|GGCAGGUACAUACAGCUGAUGAGUCCCAAAUAGGACGAAACGCGACACACACCACUAAACCGUGCAGUGUUUUGCGUCCUGUAUUCCACUGC|
 |   AND-1 |30|45|49|64|16|23|70|77|GGGCGACCCUGAUGAGCUUGGUUUAGUAUUUACAGCUCCAUACAUGAGGUGUUAUCCCUAUGCAAGUUCGAUCAGGCGAAACGGUGAAAGCCGUAGGUUGCCCAGAGACAAU|
@@ -284,6 +284,7 @@ We therefore can generate the truth table as below.
 |1|0|0|
 |0|1|0|
 |1|1|1|
+
 
 
 
