@@ -89,7 +89,7 @@ With default parameters (please see ipython file for detailed codes), we obtaine
 
 ##### NOT-1
 
-<img src=\"IMG/NOT-1_ss.png\" width=\"300\">
+<img src=\"IMG/.NOT-1_ss.png\" width=\"300\">
 
 
 ##### AND-1
