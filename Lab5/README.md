@@ -84,22 +84,22 @@ With default parameters (please see ipython file for detailed codes), we obtaine
 
 ##### YES-1
 
-<img src=\"IMG\YES-1_ss.png\" width=\"300\">
+<img src="IMG/YES-1_ss.png" width="300/">
 
 
 ##### NOT-1
 
-<img src=\"IMG/.NOT-1_ss.png\" width=\"300\">
+<img src="IMG/NOT-1_ss.png" width="300/">
 
 
 ##### AND-1
 
-<img src=\"IMG/AND-1_ss.png\" width=\"300\">
+<img src="IMG/AND-1_ss.png" width="300/">
 
 
 ##### OR-1
 
-<img src=\"IMG/OR-1_ss.png\" width=\"300\">
+<img src="IMG/OR-1_ss.png" width="300/">
 
 
 **Discussion:** The obtained RNA plots are identical to those obtained by Penchovsky & Breaker for the NOT-1, AND-1 and OR-1. For YES-1 however, the obtained structure has 4 stem loops instead of 3. The paper's results can be replicated by reducing the temperature to 5°C as shown below.
@@ -114,7 +114,7 @@ p = subprocess.run(['RNAfold', '--temp=5'],
 ```
 ##### YES-1 at T = 5°C
 
-<img src=\"IMG/YES-1_TEMP5_ss.png\" width=\"300\">
+<img src="IMG/YES-1_TEMP5_ss.png" width="300/">
 
 In order to keep the outside conditions unchanged, we used default temperature parameters in the rest of this lab.
 
@@ -160,7 +160,7 @@ Here are the results:
 GGGCGACCCUGAUGAGCUUGAGUUUAGCUCGUCACUGUCCAGGUUCAAUCAGGCGAAACGGUGAAAGCCGUAGGUUGCCC
 ((((((((.......((((((...........................))))))...(((((....))))).)))))))) (-24.50)
 
-<img src=\"IMG/YES-1_T_ss.png\" width=\"300\">
+<img src="IMG/YES-1_T_ss.png" width="300/">
 
 
 #### NOT-1 constrained folding
@@ -169,7 +169,7 @@ GGGCGACCCUGAUGAGCUUGAGUUUAGCUCGUCACUGUCCAGGUUCAAUCAGGCGAAACGGUGAAAGCCGUAGGUUGCCC
 GGCAGGUACAUACAGCUGAUGAGUCCCAAAUAGGACGAAACGCGACACACACCACUAAACCGUGCAGUGUUUUGCGUCCUGUAUUCCACUGC
 .((((....((((((..((((.((((......))))(((((...........................))))).))))))))))....)))) (-16.00)
 
-<img src=\"IMG/NOT-1_T_ss.png\" width=\"300\">
+<img src="IMG/NOT-1_T_ss.png" width="300/">
 
 <br>
 
@@ -208,7 +208,7 @@ Using the same template and parameters (detailed codes please see the ipython fi
 GGGCGACCCUGAUGAGCUUGGUUUAGUAUUUACAGCUCCAUACAUGAGGUGUUAUCCCUAUGCAAGUUCGAUCAGGCGAAACGGUGAAAGCCGUAGGUUGCCCAGAGACAAU
 ((((((((((((((((((((..........................(((.(....))))...))))))).))))).....(((((....))))).))))))))......... (-33.90)
 
-<img src=\"IMG/AND-1_TF_ss.png\" width=\"300\">
+<img src="IMG/AND-1_TF_ss.png" width="300/">
 
 
 ##### AND-1 OBS-2 bound alone
@@ -217,7 +217,7 @@ GGGCGACCCUGAUGAGCUUGGUUUAGUAUUUACAGCUCCAUACAUGAGGUGUUAUCCCUAUGCAAGUUCGAUCAGGCGAA
 GGGCGACCCUGAUGAGCUUGGUUUAGUAUUUACAGCUCCAUACAUGAGGUGUUAUCCCUAUGCAAGUUCGAUCAGGCGAAACGGUGAAAGCCGUAGGUUGCCCAGAGACAAU
 ((((((((((.(((....(((...(((.......))))))..))).))..................((((......))))(((((....))))).))))))))......... (-28.30)
 
-<img src=\"IMG/AND-1_FT_ss.png\" width=\"300\">
+<img src="IMG/AND-1_FT_ss.png" width="300/">
 
 
 ##### AND-1 OBS-1 and OBS-2 both bound
@@ -226,7 +226,7 @@ GGGCGACCCUGAUGAGCUUGGUUUAGUAUUUACAGCUCCAUACAUGAGGUGUUAUCCCUAUGCAAGUUCGAUCAGGCGAA
 GGGCGACCCUGAUGAGCUUGGUUUAGUAUUUACAGCUCCAUACAUGAGGUGUUAUCCCUAUGCAAGUUCGAUCAGGCGAAACGGUGAAAGCCGUAGGUUGCCCAGAGACAAU
 (((((((((((((((((................................................)))).))))).....(((((....))))).))))))))......... (-26.30)
 
-<img src=\"IMG/AND-1_TT_ss.png\" width=\"300\">
+<img src="IMG/AND-1_TT_ss.png" width="300/">
 
 <br>
 
@@ -261,7 +261,7 @@ We therefore can generate the truth table as below.
 GGGCGACCCUGAUGAGCUUGGUUGAGUAUUUACAGCUCCAUACAUGAGGUGUUCUCCCUACGCAAGUUCGAUCAGGCGAAACGGUGAAAGCCGUAGGUUGCCC
 ((((((((((((((((((((((.(((...........................)))...)).))))))).))))).....(((((....))))).)))))))) (-34.20)
 
-<img src=\"IMG/OR-1_TF_ss.png\" width=\"300\">
+<img src="IMG/OR-1_TF_ss.png" width="300/">
 
 
 ##### OR-1 OBS-2 bound alone
@@ -270,7 +270,7 @@ GGGCGACCCUGAUGAGCUUGGUUGAGUAUUUACAGCUCCAUACAUGAGGUGUUCUCCCUACGCAAGUUCGAUCAGGCGAA
 GGGCGACCCUGAUGAGCUUGGUUGAGUAUUUACAGCUCCAUACAUGAGGUGUUCUCCCUACGCAAGUUCGAUCAGGCGAAACGGUGAAAGCCGUAGGUUGCCC
 ((((((((.......((((((((((..........................................))))))))))...(((((....))))).)))))))) (-28.84)
 
-<img src=\"IMG/OR-1_FT_ss.png\" width=\"300\">
+<img src="IMG/OR-1_FT_ss.png" width="300/">
 
 
 ##### OR-1 OBS-1 and OBS-2 both bound
@@ -279,7 +279,7 @@ GGGCGACCCUGAUGAGCUUGGUUGAGUAUUUACAGCUCCAUACAUGAGGUGUUCUCCCUACGCAAGUUCGAUCAGGCGAA
 GGGCGACCCUGAUGAGCUUGGUUGAGUAUUUACAGCUCCAUACAUGAGGUGUUCUCCCUACGCAAGUUCGAUCAGGCGAAACGGUGAAAGCCGUAGGUUGCCC
 ((((((((.......((((((((((..........................................))))))))))...(((((....))))).)))))))) (-28.84)
 
-<img src=\"IMG/OR-1_TT_ss.png\" width=\"300\">
+<img src="IMG/OR-1_TT_ss.png" width="300/">
 
 
 <br>
