@@ -266,6 +266,8 @@ GGGCGACCCUGAUGAGCUUGGUUGAGUAUUUACAGCUCCAUACAUGAGGUGUUCUCCCUACGCAAGUUCGAUCAGGCGAA
 ((((((((.......((((((((((..........................................))))))))))...(((((....))))).)))))))) (-28.84)
 
 <img src=\"IMG/OR-1_TT_ss.png\" width=\"300\">
+
+
 <br>
 **Discussion:** For OR-1 riboswitch, four situations are discussed:
 FF: Exactly the same with the paper. Both blue areas are not bound, the red areas are not aligned, the riboswitch does not undergo cleavage.
