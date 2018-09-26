@@ -302,8 +302,8 @@ The table does not match the desired outcome as explained above, probably due to
 |Input 1|Input 2|Output|
 |------|------|------|
 |0|0|0|
-|1|0|0|
-|0|1|0|
+|1|0|0 (!)|
+|0|1|0 (!)|
 |1|1|1|
 
 
