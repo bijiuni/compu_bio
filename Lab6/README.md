@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Lab 6 - sequence alignment mapping
 
 ## Overview
