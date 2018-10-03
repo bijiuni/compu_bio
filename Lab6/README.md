@@ -38,6 +38,7 @@ Output:
 
 ## Aligning reads to the _S. oneidensis_ reference genome
 ### Very fast bowtie analysis
+The bowtie analysis for Shewanella is completed in the same manner as that of the human genome.
 
 Input:
 ```
@@ -160,6 +161,7 @@ be131-09@meowth:~/Lab6/Coverage_Plot_human$ samtools depth -a human_vfast.sorted
 ```
 
 ### Chromosome 22
+#### Coverage depth as a function of position
 <img src="IMG/chr22_coverage_depth.png" width="300/">
 
 ```
@@ -169,9 +171,11 @@ Minimum coverage =  0
 Average coverage = 0.007
 ```
 
+#### Coverage distribution
 <img src="IMG/chr22_coverage_depth_distribution.png" width="300/">
 
 ### Chromosome X
+#### Coverage depth as a function of position
 <img src="IMG/chrX_coverage_depth.png" width="300/">
 
 ```
@@ -180,9 +184,11 @@ Minimum coverage =  0
 Average coverage = 0.010
 ```
 
+#### Coverage distribution
 <img src="IMG/chrX_coverage_depth_distribution.png" width="300/">
 
 ### Chromosome Y
+#### Coverage depth as a function of position
 <img src="IMG/chrY_coverage_depth.png" width="300/">
 
 ```
@@ -191,6 +197,7 @@ Minimum coverage =  0
 Average coverage = 0.004
 ```
 
+#### Coverage distribution
 <img src="IMG/chrY_coverage_depth_distribution.png" width="300/">
 
 ### Comparing average coverage depth
@@ -243,6 +250,3 @@ Blasting both provided sequences yielded the same result with a 100% query cover
 
 ### Analysis
 Two sequences with more than 150 nucleotides were identified in the provided reads. The length of these sequences suggests this is not a chance matching and confirms that fragments of chromosome Y DNA were indeed in the reads. Jamie is therefore a man.
-=======
-# Coursework for UC Berkeley BioE 231
->>>>>>> 45b38a53017a559730b79c4827e4a326643da967
