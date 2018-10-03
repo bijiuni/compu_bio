@@ -4,7 +4,7 @@
 
 The aim of this lab is to run the bowtie analysis on strains of _Shewanella oneidensis_. The readings might have been contaminated by the experimentor (Jamie) during the run on the Illumina MiSeq. We will account for this contamination and extract key metrics to compare our strain of _Shewanella_ to a reference genome.
 
-**NOTE: All of the data files for this analysis can be found on our [server](https://bioe131.com/user/be131-09/tree/GIT/Computational-Biology/Lab6). They were not uploaded to GitHub due to their large file size.
+**NOTE: All of the data files for this analysis can be found on our [server](https://bioe131.com/user/be131-09/tree/GIT/Computational-Biology/Lab6). They were not uploaded to GitHub due to their large file size.**
 
 <br>
 
