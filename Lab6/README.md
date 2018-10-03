@@ -132,6 +132,7 @@ be131-09@meowth:~/Lab6$ samtools depth Coverage_Plot_human/human_vfast.sorted.ba
 The pileup file was analysed in the Jupyter notebook.
 
 ### Coverage depth as a function of position
+Here we plotted the coverage depth as a function of position in the human pileup file. Positions with no coverage do not all appear here. **The position indicated in the graph does not correspond to the position in the genome.**
 <img src="IMG/human_nozero_coverage_depth.png" width="300/">
 
 ```
@@ -140,6 +141,7 @@ Minimum coverage =  0
 ```
 
 ### Coverage distribution
+The coverage distribution was plotted. Positions with no coverage do not all appear here so this graph should only be used to compare the distribution of non-zero coverage.
 <img src="IMG/human_nozero_coverage_depth_distribution.png" width="300/">
 
 ### Analysis
