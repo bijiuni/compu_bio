@@ -6,7 +6,6 @@ In this lab we generated some random files (binary and fasta) and grabbed some r
 
 **NOTE: All of the data files for this analysis can be found on our [server](https://bioe131.com/user/be131-09/tree/GIT/Computational-Biology/Lab7). They were not uploaded to GitHub due to their large file size.**
 
-<br>
 
 ## Background
 
@@ -113,151 +112,107 @@ After the compression, information can be summarized into the table below:
 
 **_Q:_** Which algorithm achieves the best level of compression on each file type?
 
-**_A:_**
+**_A:_** It seems that in terms of level of compression, Arithmetic compress is the best for all file type we used here. Although sometimes it has the same level of performance with gzip.
 
 <br>
 **_Q:_** Which algorithm is the fastest?
 
-**_A:_**
+**_A:_** Generally, pbzip2 is the fastedst among the algorithms we used here. In some cases, it is 20 times faster than arithmetic compress.
 
 <br>
 **_Q:_** What is the difference between bzip2 and pbzip2? Do you expect one to be faster and why?
 
-**_A:_**
+**_A:_** pbzip2 is a modified version of bzip2. The largest difference is that pbzip2 supports multi-threading. This means that 
+linear speed improvements can be achieved on multi-CPU and multi-core computers. Therefore we expect pbzip2 to be faster.
 
 <br>
 **_Q:_** How does the level of compression change as the percentage of zeros increases? Why does this
 happen?
 
-**_A:_**
+**_A:_** When the percentage of zeros increases, the level of compression improves dramatically. This is due to the intrinsic entropy of the data.
 
 <br>
 **_Q:_** What is the minimum number of bits required to store a single DNA base?
 
-**_A:_**
+**_A:_** There are four different possibilities: A, T, G, C. The minimum number of bits required is log2(4)=2.
 
 <br>
 **_Q:_** What is the minimum number of bits required to store an amino acid letter?
 
-**_A:_**
+**_A:_** There are 20 different possibilities. The minimum number of bits required is log2(20)=4.3. It should be an integer therefore the minimum should be 5.
 
 <br>
 **_Q:_** In your tests, how many bits did gzip and bzip2 actually require to store your random DNA and
 protein sequences?
 
-**_A:_**
+**_A:_** When it comes to storing DNA, gzip takes 29.2MB and bzip2 takes 27.3MB. Let's take 30MB for an approximation. 30MB/100,000,000 = 30 * (1,048,576 * 8)/100,000,000 bits = 2.52 bits.
+
+When it comes to storing protein, gzip takes 63.5MB and bzip2 takes 59.8MB. Let's take 60MB for an approximation. 60/MB/100,000,000 = 60 * (1,048,576 * 8)/100,000,000 bits = 5.04 bits.
 
 <br>
 **_Q:_** Are gzip and bzip2 performing well on DNA and proteins?
 
-**_A:_**
+**_A:_** In terms of compression ratio, bzip2 has a relatively good performance while gzip is the worst among the four compression algorithms. Arithmetic compress has the best compression rate. In terms of speed, they are both faster than arithmetic compress. However, pbzip2 is much faster than the two. In summary, they have moderate performances on DNA and proteins.
 <br>
 
 
 ## Compressing real data
 
 
-Extracting reads for a single chromosome from BAM file with samtools
+We searched using entrez using the following criteria
 ```
-be131-09@meowth:~/Lab6/Coverage_Plot_human$ samtools view -b human_vfast.sorted.bam chr22 > human_vfast.sorted.chr22.bam
-be131-09@meowth:~/Lab6/Coverage_Plot_human$ samtools view -b human_vfast.sorted.bam chrX > human_vfast.sorted.chrX.bam
-be131-09@meowth:~/Lab6/Coverage_Plot_human$ samtools view -b human_vfast.sorted.bam chrY > human_vfast.sorted.chrY.bam
-```
-
-Generate list of coordinates in chromosomes 22, X and Y and the number of times read aligned to that position
-```
-be131-09@meowth:~/Lab6/Coverage_Plot_human$ samtools depth -a human_vfast.sorted.chr22.bam > human_pileup_chr22.tab
-be131-09@meowth:~/Lab6/Coverage_Plot_human$ samtools depth -a human_vfast.sorted.chrX.bam > human_pileup_chrX.tab
-be131-09@meowth:~/Lab6/Coverage_Plot_human$ samtools depth -a human_vfast.sorted.chrY.bam > human_pileup_chrY.tab
+handle = Entrez.esearch(db = 'nucleotide',       # search 10 results and save the names and sequences
+                        term = 'gp120 and HIV',
+                        sort = 'relevance',
+                        idtype = 'acc',
+                        retmax = 10)
 ```
 
-### Chromosome 22
-#### Coverage depth as a function of position
-<img src="IMG/chr22_coverage_depth.png" width="300/">
-
+After checking that the results are proper, we saved the information into a dictionary:
 ```
-# Coverage statistics being calculated
-Maximum coverage =  1
-Minimum coverage =  0
-Average coverage = 0.007
+dict_gp120 = dict(zip(list_name, list_seq))
 ```
 
-#### Coverage distribution
-<img src="IMG/chr22_coverage_depth_distribution.png" width="300/">
-
-### Chromosome X
-#### Coverage depth as a function of position
-<img src="IMG/chrX_coverage_depth.png" width="300/">
+The multi_fasta file is generated using the following methods:
 
 ```
-Maximum coverage =  1
-Minimum coverage =  0
-Average coverage = 0.010
+ofile = open("multi_fasta.fa", "w")
+
+for i in range(len(list_seq)):                    # write to the multi_fasta file
+    ofile.write(">" + list_name[i] + "\n" +list_seq[i] + "\n")
+
+ofile.close()
 ```
 
-#### Coverage distribution
-<img src="IMG/chrX_coverage_depth_distribution.png" width="300/">
+The real data is compressed using the same methods and the information can be summarized using the table below:
 
-### Chromosome Y
-#### Coverage depth as a function of position
-<img src="IMG/chrY_coverage_depth.png" width="300/">
+|original file|command type|input file size|output file size|compression ratio|
+|------|------|------|------|------|
+|multi_fasta.fa|gzip|6.61 kB|1.25 kB|18.91%|
+|multi_fasta.fa|bzip2|6.61 kB|1.33 kB|20.12%|
+|multi_fasta.fa|ArithmeticCompress	|6.61 kB|2.42 kB|36.61%|
 
-```
-Maximum coverage =  1
-Minimum coverage =  0
-Average coverage = 0.004
-```
+**_Q:_**  A priori, do you expect to achieve better or worse compression here than random data? Why?
 
-#### Coverage distribution
-<img src="IMG/chrY_coverage_depth_distribution.png" width="300/">
+**_A:_** We expected the compression to be better than random data. As there is more pattern to be found
 
-### Comparing average coverage depth
-The average depth for each chromosome was plotted in a bar chart. The coverage percentage was given with greater precision than in the previous iteration.
+**_Q:_**  How does the compression ratio of this file compare to random data?
 
-```
-CALCULATING AVERAGE FOR chr22
-Average depth of coverage in chr22 : 0.6868%
+**_A:_** The compression ratio was 29.2%, 27.3%, and 25% for random data. gzip makes use of Huffman. Real sequence will have different frequency for different base. This makes sense. bzip2 uses Burrows-Wheeler. Real sequences have more patterns to be found, therefore it should perform better on real data as well. However, arithmetic compress performs worse on real data.
 
----------------------------------------------------------------------
+## Estimating compression of 1000 terabytes
 
-CALCULATING AVERAGE FOR chrX
-Average depth of coverage in chrX : 0.9715%
+The best performance we achieved was 0:00.10 for 100MB using pbzip2. For 100 TB, it would require 0.1s*10^6 = 100,000 seconds = 27.8 hours. Therefore, the key limit here is time. Furthermore, the differences between compression ratio for the four algorithms are not huge.
 
----------------------------------------------------------------------
+Assume that each data can only be processed using one computer (otherwise a large number of computing power can certainly compress all the data), we use pbzip2 for all the data.
 
-CALCULATING AVERAGE FOR chrY
-Average depth of coverage in chrY : 0.4118%
-```
+80% re-sequencing of genomes and plasmid: One computer can compress in a day (86400 seconds/0.1 second) *100MB = 86.4TB <800TB. The reduction in data in 24 hours: (86400 seconds/0.1 second) *100MB * (1-20.12%) = 69TB
 
-<img src="IMG/average_depth_chromosome.png" width="300/">
+10% protein sequences: use pbzip2. One computer can compress in a day (86400 seconds/0.82 second) *100MB = 10.54TB <100TB. The reduction in data in 24 hours: (86400 seconds/0.82 second) *100MB * (1-59.8%) = 4.2TB
 
+10% random binary data: assume this is random binary with 50% zeros. One computer can compress in a day (86400 seconds/1.5 second) *100MB = 5.76TB < 100TB. The reduction in data in 24 hours: (86400 seconds/1.5 second) *100MB * 0 = 0TB. Compression doesn't work.
 
-### Analysis
-All three chromosomes have a low average coverage (less than 1%), with chromosome Y having the lowest. However, chromosome Y has the maximum coverage depth (2). This suggests some of the human DNA found in the provided sequence reads comes from an individual with a Y chromosome (rather than this match just occuring by chance). This would mean Jamie is a man. This is confirmed in the second part of our analysis (see Extra credit 2 - Zooming in on high coverage regions).
+Therefore, the total reduction is 49TB + 4.2TB = 53.2TB.
 
-Interestingly, much like with the _S. oneidensis_ reference genome, the coverage of all three chromosomes is not uniform either. For instance, the first 15 million positions of chromosome 22 do not show any coverage.
-
-<br>
-
-## Extra credit 2 - Zooming in on high coverage regions
-We further analysed the pileup files in our Jupyter notebook to identify regions with a higher than average coverage. Two regions of interest in chrY were identified: (18485047-18485210), (27170225-27170466). The sequences were viewed with samtools and identified using BLAST.
-
-### chrY:18485047-18485210
-```
-be131-09@meowth:~/Lab6$ samtools view Coverage_Plot_human/human_vfast.sorted.bam "chrY:18485047-18485210"
-read524540      0       chrY    18484909        1       300M    *       0       0       TACATTTTATGCAATCAACTTTTTTACGTGTGTGTATCTGTAGTTTCATTTCTGTGGTGATGAGTGAGACAGGTGTGGAGTAAATCAGTCCATTACATTCTTTTCTAGGTTACTTGAATTTGACATCTCAGTTCAGCATTGTAAACTCTTACAATGAACTCATAAAGTTAGAACAACGTTAAAAATAATTGCTATCTAAGTATCAGAGTTAGAATAAATTATTCCCAAGGTTTCCCCTCACTTTAAGTTTCCCTGATTCTTGTATTTTTTACTTAAATTGGATATACAATTATTATTTTT    GGEGGF;;GGGEGGGGGGG>GGGG@EGBFGGGGGF.EGGFGFBEGDGFC5GG0AAEGEG1;BGAG&GFC@CFC+2FGGBGBF-E4GGGGG>6C=GG7FGEBEGEGGEFG?GG-GGEGFGGBFFFGFGEGGGGEGFGDFFEGGBG2FEG'FFG?GGGGGGE:GGGEG5DGGGD>GG8&GFGG5GC0CGFG=+GGGGFGGEFFDGGGGGFFFFDEBCED?GGGGFFEE@?GFDFFGECDCBFGF?D%CCGGBFGGGFGG9AFF:6=GGFCFGB;5F.@D@DBD6ECGGGBFCGFBEGC4+'F    AS:i:-2 XS:i:-2 XN:i:0  XM:i:1  XO:i:0  XG:i:0  NM:i:1  MD:Z:176A123   YT:Z:UU
-read77943       16      chrY    18485047        1       300M    *       0       0       TTGTAAACTCTTACAATGAACTCATAAAGTTAGAACAAAGTTAAAAATAATTGCTATCTAAGTATCAGAGTTAGAATAAATTATTCCCAAGGTTTCCCCTCACTTTAAGTTTCCCTGATTCTTGTATTTTTTACTTAAATTGGATATACAATTACTATTTTTTCATTATTTAATTCATAATACATTTGGTAAAATAATTTCTTTTTAAGTAAAACATTTAATAGTGCAGTTTGGTTCGTGTTAATTATACTTCAACGAACCCCTTATGTTACTTGCCTAGTGACAGAGTATGTGGGTAAA    BGFGFB5=>@GFFFG'GFFGEAFFGCF4=>FFFG1D@<BD7@4E?F0DCGEGFFGGC7>:>CDG-GFGGAGGGGGEGGFB=FEGFFGFGCGEEFGEGFFGG?FFBCGAGGGEEGGGAGGDGDG@?GD/EGFGF-<:FDFGG46G9GFFAFFGFGGGFGGCGE&FGFGFGGGEGG>DFG(EEGGGFEGG:DFGGGFGGGFG:GGGGGFGFBEGAFCCFFGGFEGGGGGGGGGG7AEFEGFFGCGGG;GGGGDFFFEG:GGEEFFGGEGGGGDGEC<FGAGCGG6GFGBD4EGGGGCGGGFG    AS:i:-5 XS:i:-5 XN:i:0  XM:i:1  XO:i:0  XG:i:0  NM:i:1  MD:Z:154T145   YT:Z:UU
-```
-
-Blasting both provided sequences yielded the same result with a 100% query cover: _Homo sapiens BAC clone RP11-455E3 from Y, complete sequence_ . This is a Bacterial Artificial Chromosome usually obtained by replication in E.Coli. From this we can infer that the gene of interest is RP11-455E3.
-
-### chrY:27170225-27170466
-```
-be131-09@meowth:~/Lab6$ samtools view Coverage_Plot_human/human_vfast.sorted.bam "chrY:27170225-27170466"
-read929972      0       chrY    27170165        1       300M    *       0       0       ATATGTATATCACAAGCACACTGTCAGAAAATGTCAAAGGTGAGTTTTATGATACCACACATGTCCTGTTTTTACGTGTGACAGTTGGCTGTAACCATGTGGGATGATGACAGTTATTTCTGTCAGCTGGGTTTGCATACAGGACTCACAATTTCACCTGTGTGCTGAGTGCTACATTGGTTCTGCTTGTATAACCCAAAGACTCTATAAAAGTATGTGTCAATGTTGTAATCTTTTGTGATGTTTGTACAAGAATGTGATCCATGATATCACACATGTCCCTACACCTAGTTATAAGAG    FGGGFGA4FGGGGF<%EGGFFGGG7GGGFFDCGG/GGGGGGBGGGGCDGFFEAFGADGF,,E@DGFGGGBGGGGAGGFGGG>GGGEAGFFGFGFFEGEGGGG?GEGGGGGFDGGG@GCGGGGGG=C@GF@FGGGGGDEGGFGGAAGFGGGG=GF;GE:GEGGFFF.EGGGFA@AGBGEGGGG<>GFEGGGBFGGGFEBGGGGG@AFGDGFGGGDGF/FFF9GGFGGEG><DGFD2GFBGEGG?GFEBGGGGAFGFE@2EEFFB'9G0GFGGG8/6&*>F>?GEBGDFFBFD<<G>FCGA3    AS:i:-7 XS:i:-7 XN:i:0  XM:i:2  XO:i:0  XG:i:0  NM:i:2  MD:Z:15T75C208 YT:Z:UU
-read507912      16      chrY    27170225        1       300M    *       0       0       ATGTCCTGTTTTTACGTGTGACAGTTGGCTGCAACCATGTGGGATGATGACAGTTATTTCTGTCAGCTGGGTTTGCATACAGGACTCACAATTTCACCTGTGTGCTGAGTGCTACATTGGTTCTGCTTGTATAACCCAAAGACTCTATAAAAGTATGTGTCAATGTTGTAATCTTTTGTGATGTTTGTACAAGAATGTGATCCATGATATCACACATGTCCCTACACCTAGTTATAAGAGCCTAAATATTCTCTATTTGCTGAGTTCACATCTAAGAGTCGTTATCATTCCTGCGAGCCT    F@FB73FF0F6DB;F9GG<D:EDEG>09@-F5F<FA@BD:EDAFFFA9GGD<FGD*E>DF7FC,EGGGGD4GFFFGGF=AGGGFGGGFFFGFGF@3DBFGGGF;FFFFGFGFGGFG+0B8FGGFC5?BEGGGGGG?GCG>DFGFEFEGGGD7GBGFBFGCGDD08GGGEGFFBCGGGGGFBDCGGDFGFDGGGGGGFGGGGGGCFF/GGGGGGFGGFGGCAGGGEF=CDGEFGGGDCFGGCGGDFFEFFGGGFBGCDFGGGGG+3GCG>D*GGGF>GGGG>GGGCEFDE?CFGGGGGGFG    AS:i:0  XS:i:0  XN:i:0  XM:i:0  XO:i:0  XG:i:0  NM:i:0  MD:Z:300       YT:Z:UU
-```
-Blasting both provided sequences yielded the same result with a 100% query cover: _Homo sapiens chromosome Y palindromes P1, P2, P3 and inverted repeat IR2 (P1-P2-P3-IR2@) on chromosome Y_.
-
-### Analysis
-Two sequences with more than 150 nucleotides were identified in the provided reads. The length of these sequences suggests this is not a chance matching and confirms that fragments of chromosome Y DNA were indeed in the reads. Jamie is therefore a man.
+The money saved per day: $50/TB * 53.2TB = $2660
+In a year the bonus would be 365*$2600 = $970,900
