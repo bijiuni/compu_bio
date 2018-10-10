@@ -115,33 +115,39 @@ After the compression, information can be summarized into the table below:
 **_A:_** It seems that in terms of level of compression, Arithmetic compress is the best for all file type we used here. Although sometimes it has the same level of performance with gzip.
 
 <br>
+
 **_Q:_** Which algorithm is the fastest?
 
 **_A:_** Generally, pbzip2 is the fastedst among the algorithms we used here. In some cases, it is 20 times faster than arithmetic compress.
 
 <br>
+
 **_Q:_** What is the difference between bzip2 and pbzip2? Do you expect one to be faster and why?
 
 **_A:_** pbzip2 is a modified version of bzip2. The largest difference is that pbzip2 supports multi-threading. This means that 
 linear speed improvements can be achieved on multi-CPU and multi-core computers. Therefore we expect pbzip2 to be faster.
 
 <br>
+
 **_Q:_** How does the level of compression change as the percentage of zeros increases? Why does this
 happen?
 
 **_A:_** When the percentage of zeros increases, the level of compression improves dramatically. This is due to the intrinsic entropy of the data.
 
 <br>
+
 **_Q:_** What is the minimum number of bits required to store a single DNA base?
 
 **_A:_** There are four different possibilities: A, T, G, C. The minimum number of bits required is log2(4)=2.
 
 <br>
+
 **_Q:_** What is the minimum number of bits required to store an amino acid letter?
 
 **_A:_** There are 20 different possibilities. The minimum number of bits required is log2(20)=4.3. It should be an integer therefore the minimum should be 5.
 
 <br>
+
 **_Q:_** In your tests, how many bits did gzip and bzip2 actually require to store your random DNA and
 protein sequences?
 
@@ -150,6 +156,7 @@ protein sequences?
 When it comes to storing protein, gzip takes 63.5MB and bzip2 takes 59.8MB. Let's take 60MB for an approximation. 60/MB/100,000,000 = 60 * (1,048,576 * 8)/100,000,000 bits = 5.04 bits.
 
 <br>
+
 **_Q:_** Are gzip and bzip2 performing well on DNA and proteins?
 
 **_A:_** In terms of compression ratio, bzip2 has a relatively good performance while gzip is the worst among the four compression algorithms. Arithmetic compress has the best compression rate. In terms of speed, they are both faster than arithmetic compress. However, pbzip2 is much faster than the two. In summary, they have moderate performances on DNA and proteins.
