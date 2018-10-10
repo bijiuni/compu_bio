@@ -2,154 +2,161 @@
 
 ## Overview
 
-The aim of this lab is to run the bowtie analysis on strains of _Shewanella oneidensis_. The readings might have been contaminated by the experimentor (Jamie) during the run on the Illumina MiSeq. We will account for this contamination and extract key metrics to compare our strain of _Shewanella_ to a reference genome.
+In this lab we generated some random files (binary and fasta) and grabbed some real biological information online. Compression algorithms were investigated using the data.
 
 **NOTE: All of the data files for this analysis can be found on our [server](https://bioe131.com/user/be131-09/tree/GIT/Computational-Biology/Lab7). They were not uploaded to GitHub due to their large file size.**
 
 <br>
 
-## Aligning reads to the human reference genome
-### Very fast bowtie analysis
+## Background
 
-**_Q:_** What will you use for the database? Input reads? If you use the --un unaligned.fastq option, what will unaligned.fastq contain?
+Key information is recorded below:
 
-**_A:_** To map the reads  to the human genome and remove any contamination we use the human genome as database and the illumina reads as input. The unaligned.fastq option will provide all the reads that could not be aligned to the human genome, i.e. the uncontaminated data.
+data: 1000TB every day
+hard disk cost: $50 per TB
 
-The bowtie algorithm was run from the terminal using the following input.
+Result: 1% reduction -> $500 saving per day
 
-Input:
+Options:
+* Compression algorithm fast enough to compress 1000TB per day
+* Not fast enough but the savings are maximized
+
+
+## Simulating the data
+
+### Binary data
+
+Each file contains 50%-100% of zeros.
+
+numpy functions are used to generate the data. The b here stands for binary.
+
 ```
-be131-09@meowth:~$ bowtie2 -p 4 --very-fast --no-unal -x /data/hg19/hg19 -U /data/lab6/illumina_reads.fastq -S Lab6/Alignments/human_vfast.sam --un Lab6/Alignments/unaligned_human_vfast.fastq
+percentages = [i for i in range(50,101,10)]  # a list a desired percentage
+
+for p in percentages:   # call ramdom to generate random data, call packbits and then write them into file
+    binary_data = np.packbits(np.random.choice([0, 1], size=8*1024*1024*100, replace=True, p = [p/100, 1-p/100]))
+    open('Data/zeros_%sp' %p, 'wb').write(binary_data)
 ```
 
-Output:
+
+### DNA and protein data
+
+Instead of saving it as a binary file, DNA and protein information is saved in two fasta files.
+
+Note the probabilities are equal as defulat. The join function turns the numpy array into a string.
+
+DNA:
 ```
-1124714 reads; of these:
-  1124714 (100.00%) were unpaired; of these:
-    1028379 (91.43%) aligned 0 times
-    87274 (7.76%) aligned exactly 1 time
-    9061 (0.81%) aligned >1 times
-8.57% overall alignment rate
+dna = np.random.choice(['A', 'T', 'G', 'C'], size=100000000, replace=True);
+open('Data/dna.fa', 'w').write(''.join(dna));
 ```
 
-**_Q:_** What percentage of your sequencing library came from contaminating human DNA?
-
-**_A:_** The analysis shows that 8.57% of the sequencing library came from human DNA which suggests that there was some contamination by one of the experimenter.
+Protein:
+```
+protein = np.random.choice(list(string.ascii_uppercase), size=100000000, replace=True);
+open('Data/protein.fa', 'w').write(''.join(protein));
+```
 
 <br>
 
-## Aligning reads to the _S. oneidensis_ reference genome
-### Very fast bowtie analysis
-The bowtie analysis for Shewanella is completed in the same manner as that of the human genome.
+## Compressing the data
 
-Input:
-```
-be131-09@meowth:~/Lab6$ bowtie2 -p 4 --very-fast --no-unal -x /data/lab6/shewanella_oneidensis_mr-1 -U ~/Lab6/Alignments/unaligned_human_vfast.fastq -S ~/Lab6/Alignments/shewanella_vfast.sam --un ~/Lab6/Alignments/unaligned_shewanella_vfast.fastq
-```
+We compressed the files using command like the following. Note that all processes are automated. We achieved this by using a
+file list, the symbol !, and the symbol $.
 
-Output:
 ```
-1028379 reads; of these:
-  1028379 (100.00%) were unpaired; of these:
-    299560 (29.13%) aligned 0 times
-    687571 (66.86%) aligned exactly 1 time
-    41248 (4.01%) aligned >1 times
-70.87% overall alignment rate
+!time gzip -k $file
 ```
 
-### Very sensitive bowtie analysis
+More comments and codes please refer to the [ipython](https://github.com/bijiuni/compu_bio/blob/master/Lab7/Lab7.ipynb) file.
 
-Input:
-```
-be131-09@meowth:~/Lab6$ bowtie2 -p 4 --very-sensitive --no-unal -x /data/lab6/shewanella_oneidensis_mr-1 -U ~/Lab6/Alignments/unaligned_human_vfast.fastq -S ~/Lab6/Alignments/shewanella_vsensitive.sam --un ~/Lab6/Alignments/unaligned_shewanella_vsensitive.fastq
-```
+After the compression, information can be summarized into the table below:
 
-Output:
-```
-1028379 reads; of these:
-  1028379 (100.00%) were unpaired; of these:
-    298112 (28.99%) aligned 0 times
-    688180 (66.92%) aligned exactly 1 time
-    42087 (4.09%) aligned >1 times
-71.01% overall alignment rate
-```
-
-**_Q:_** If you use the --un unaligned.fastq option, what will unaligned.fastq contain?
-
-**_A:_** The unaligned.fastq file will contain reads that couldn't be aligned with the shewanella reference genome. This can be reads from other sources of contamination or even reads linked to human contamination that were not detected in the previous iteration of the bowtie algorithm.
-
-
-**_Q:_** What percentage of your filtered library didn’t align to the reference genome? If you use --verysensitive
-instead of --very-fast, does this percentage increase or decrease?
-
-**_A:_** In the very fast bowtie analysis, 29.13% of the filtered sequence did not align to the _S. oneidensis_ reference genome. Using the very sensitive option decreases this percentage to 28.99%. The execution runtime is longer in the sensitive mode but shorter alignment sequences can be identified. Interestingly, the reduced rate suggests the number of mismatches in the fast analysis is limited.
+|original file|command type|input file size|output file size|time elapse|
+|------|------|------|------|------|
+|zeros_50p|gzip|105 MB|105 MB|0:04.45|
+|zeros_50p|bzip2|105 MB|105 MB|0:16.72|
+|zeros_50p|pbzip2|105 MB|105 MB|0:01.50|
+|zeros_50p|ArithmeticCompress|105 MB|105 MB|0:40.79|
+|zeros_60p|gzip|105 MB|102 MB|0:05.63|
+|zeros_60p|bzip2|105 MB|105 MB|0:18.21|
+|zeros_60p|pbzip2|105 MB|105 MB|0:01.39|
+|zeros_60p|ArithmeticCompress|105 MB|102 MB|0:42.58|
+|zeros_70p|gzip|105 MB|93.6 MB|0:06.49|
+|zeros_70p|bzip2|105 MB|99.8 MB|0:14.28|
+|zeros_70p|pbzip2|105 MB|99.8 MB|0:01.17|
+|zeros_70p|ArithmeticCompress|105 MB|92.4 MB|0:48.34|
+|zeros_80p|gzip|105 MB|81.2 MB|0:16.72|
+|zeros_80p|bzip2|105 MB|86.6 MB|0:12.04|
+|zeros_80p|pbzip2|105 MB|86.7 MB|0:00.95|
+|zeros_80p|ArithmeticCompress|105 MB|75.7 MB|0:35.39|
+|zeros_90p|gzip|105 MB|58.7 MB|0:23.70|
+|zeros_90p|bzip2|105 MB|61.2 MB|0:11.26|
+|zeros_90p|pbzip2|105 MB|61.2 MB|0:00.76|
+|zeros_90p|ArithmeticCompress|105 MB|49.2 MB|0:28.81|
+|zeros_100p|gzip|105 MB|102 kB|0:00.87|
+|zeros_100p|bzip2|105 MB|113 B|0:01.22|
+|zeros_100p|pbzip2|105 MB|5.62 kB|0:00.10|
+|zeros_100p|ArithmeticCompress|105 MB|1.03 kB|0:18.93|
+|dna.fa|gzip|100 MB|29.2 MB|0:14.56|
+|dna.fa|bzip2|100 MB|27.3 MB|0:09.49|
+|dna.fa|pbzip2|100 MB|27.3 MB|0:00.69|
+|dna.fa|ArithmeticCompress|100 MB|25 MB|0:21.41|
+|protein.fa|gzip|100 MB|63.5 MB|0:04.67|
+|protein.fa|bzip2|100 MB|59.8 MB|0:12.80|
+|protein.fa|pbzip2|100 MB|59.8 MB|0:00.82|
+|protein.fa|ArithmeticCompress|100 MB|58.8 MB|0:29.85|
 
 <br>
 
-## Generate a coverage plot with the _S. oneidensis_ reference genome
+## Questions
 
-```
-be131-09@meowth:~/Lab6$ samtools view -b Alignments/shewanella_vsensitive.sam > Coverage_Plot/shewanella_vsensitive.bam
-be131-09@meowth:~/Lab6$ samtools sort Coverage_Plot/shewanella_vsensitive.bam > Coverage_Plot/shewanella_vsensitive.sorted.bam
-be131-09@meowth:~/Lab6$ samtools index Coverage_Plot/shewanella_vsensitive.sorted.bam
-be131-09@meowth:~/Lab6$ samtools depth -a Coverage_Plot/shewanella_vsensitive.sorted.bam > Coverage_Plot/shewanella_pileup.tab
-```
-The analysis of the pileup is conducted in Python.
+**_Q:_** Which algorithm achieves the best level of compression on each file type?
 
-**_Q:_** What is the min, max, and mean coverage across all positions?
-
-**_A:_** Here are the results of our analysis in Python.
-
-```
-Maximum coverage =  281
-Minimum coverage =  0
-Average coverage = 37.04
-```
-
-### Coverage depth as a function of position
-<img src="IMG/shewanella_coverage_depth.png" width="300/">
-
-The coverage is not uniform and some regions have far higher coverage than average (for instance around position 3,700,000).
-
-### Coverage depth distribution
-We then plotted the coverage depth distribution using the built in histogram function in the matplolib library.
-
-<img src="IMG/shewanella_coverage_depth_distribution.png" width="300/">
-
-The coverage depth distribution seems to follow an extreme value (Gumbel) distribution. The most informational positions are those with coverage larger than 100, after the tail.
+**_A:_**
 
 <br>
+**_Q:_** Which algorithm is the fastest?
 
-## Extra credit 1 - Generate a coverage plot with the Human genome
+**_A:_**
 
-Generating a pileup for the human genome.
-/!\ We do not use the -a output option when generating the pileup file to avoid positions with zero depth. If we were to use it we would create a file of more than 50GB.
-```
-be131-09@meowth:~/Lab6$ samtools view -b Alignments/human_vfast.sam > Coverage_Plot_human/human_vfast.bam
-be131-09@meowth:~/Lab6$ samtools sort Coverage_Plot_human/human_vfast.bam > Coverage_Plot_human/human_vfast.sorted.bam
-be131-09@meowth:~/Lab6$ samtools index Coverage_Plot_human/human_vfast.sorted.bam
-be131-09@meowth:~/Lab6$ samtools depth Coverage_Plot_human/human_vfast.sorted.bam > Coverage_Plot_human/human_pileup.tab
-```
+<br>
+**_Q:_** What is the difference between bzip2 and pbzip2? Do you expect one to be faster and why?
 
-The pileup file was analysed in the Jupyter notebook.
+**_A:_**
 
-### Coverage depth as a function of position
-Here we plotted the coverage depth as a function of position in the human pileup file. Positions with no coverage do not all appear here. **The position indicated in the graph does not correspond to the position in the genome.**
-<img src="IMG/human_nozero_coverage_depth.png" width="300/">
+<br>
+**_Q:_** How does the level of compression change as the percentage of zeros increases? Why does this
+happen?
 
-```
-Maximum coverage =  2
-Minimum coverage =  0
-```
+**_A:_**
 
-### Coverage distribution
-The coverage distribution was plotted. Positions with no coverage do not all appear here so this graph should only be used to compare the distribution of non-zero coverage.
-<img src="IMG/human_nozero_coverage_depth_distribution.png" width="300/">
+<br>
+**_Q:_** What is the minimum number of bits required to store a single DNA base?
 
-### Analysis
-There is very little coverage of the human genome compared with Shewanella. The maximum coverage depth is only 2 despite 8.57% of the sequencing library came from human DNA. 
+**_A:_**
 
-## Extra credit 1 - Average depth of coverage for specific chromosomes
+<br>
+**_Q:_** What is the minimum number of bits required to store an amino acid letter?
+
+**_A:_**
+
+<br>
+**_Q:_** In your tests, how many bits did gzip and bzip2 actually require to store your random DNA and
+protein sequences?
+
+**_A:_**
+
+<br>
+**_Q:_** Are gzip and bzip2 performing well on DNA and proteins?
+
+**_A:_**
+<br>
+
+
+## Compressing real data
+
+
 Extracting reads for a single chromosome from BAM file with samtools
 ```
 be131-09@meowth:~/Lab6/Coverage_Plot_human$ samtools view -b human_vfast.sorted.bam chr22 > human_vfast.sorted.chr22.bam
