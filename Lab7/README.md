@@ -112,7 +112,7 @@ After the compression, information can be summarized into the table below:
 
 **_Q:_** Which algorithm achieves the best level of compression on each file type?
 
-**_A:_** It seems that in terms of level of compression, Arithmetic compress is the best for all file type we used here. However, gzip has similar compression rates (only 2.5% less compression) for protein and dna sequence.
+**_A:_** It seems that in terms of level of compression, Arithmetic compress is the best for all file type we used here. However, gzip has similar compression rates (only 2.5% less compression) for protein and dna sequences.
 
 <br>
 
