@@ -153,7 +153,7 @@ linear speed improvements can be achieved on multi-CPU and multi-core computers.
 30MB/100,000,000 = 30 * (1,048,576 * 8)/100,000,000 bits = 2.52 bits.
 
 When it comes to storing protein, gzip takes 63.5MB and bzip2 takes 59.8MB. Let's take 60MB for an approximation.
-60/MB/100,000,000 = 60 * (1,048,576 * 8)/100,000,000 bits = 5.04 bits.
+60MB/100,000,000 = 60 * (1,048,576 * 8)/100,000,000 bits = 5.04 bits.
 
 <br>
 
