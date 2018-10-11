@@ -42,7 +42,7 @@ for p in percentages:   # call ramdom to generate random data, call packbits and
 
 Instead of saving it as a binary file, DNA and protein information is saved in two fasta files.
 
-Note the probabilities are equal as defulat. The join function turns the numpy array into a string.
+Note the probabilities are equal as default. The join function turns the numpy array into a string.
 
 DNA:
 ```
@@ -67,11 +67,11 @@ file list, the symbol !, and the symbol $.
 !time gzip -k $file
 ```
 
-More comments and codes please refer to the [ipython](https://github.com/bijiuni/compu_bio/blob/master/Lab7/Lab7.ipynb) file.
+For more comments and codes please refer to the [ipython](https://github.com/bijiuni/compu_bio/blob/master/Lab7/Lab7.ipynb) file.
 
 After the compression, information can be summarized into the table below:
 
-|original file|command type|input file size|output file size|time elapse|
+|original file|command type|input file size|output file size|time elapsed|
 |------|------|------|------|------|
 |zeros_50p|gzip|105 MB|105 MB|0:04.45|
 |zeros_50p|bzip2|105 MB|105 MB|0:16.72|
@@ -112,13 +112,13 @@ After the compression, information can be summarized into the table below:
 
 **_Q:_** Which algorithm achieves the best level of compression on each file type?
 
-**_A:_** It seems that in terms of level of compression, Arithmetic compress is the best for all file type we used here. Although sometimes it has the same level of performance with gzip.
+**_A:_** It seems that in terms of level of compression, Arithmetic compress is the best for all file type we used here. However, gzip has similar compression rates (only 2.5% less compression) for protein and dna sequence.
 
 <br>
 
 **_Q:_** Which algorithm is the fastest?
 
-**_A:_** Generally, pbzip2 is the fastedst among the algorithms we used here. In some cases, it is 20 times faster than arithmetic compress.
+**_A:_** Generally, pbzip2 is the fastest among the algorithms we used here. In most cases it is 30 times faster than arithmetic compress. Even at its lowest relative speed for zeros_50p, pbzip is still 2.95 times faster than any other algorithm tested.
 
 <br>
 
@@ -129,8 +129,7 @@ linear speed improvements can be achieved on multi-CPU and multi-core computers.
 
 <br>
 
-**_Q:_** How does the level of compression change as the percentage of zeros increases? Why does this
-happen?
+**_Q:_** How does the level of compression change as the percentage of zeros increases? Why does this happen?
 
 **_A:_** When the percentage of zeros increases, the level of compression improves dramatically. This is due to the intrinsic entropy of the data.
 
@@ -144,22 +143,25 @@ happen?
 
 **_Q:_** What is the minimum number of bits required to store an amino acid letter?
 
-**_A:_** There are 20 different possibilities. The minimum number of bits required is log2(20)=4.3. It should be an integer therefore the minimum should be 5.
+**_A:_** There are 20 different possibilities. The minimum number of bits required is log2(20)=4.3. It should be an integer therefore the minimum should be 5 bits for a binary code.
 
 <br>
 
-**_Q:_** In your tests, how many bits did gzip and bzip2 actually require to store your random DNA and
-protein sequences?
+**_Q:_** In your tests, how many bits did gzip and bzip2 actually require to store your random DNA and protein sequences?
 
-**_A:_** When it comes to storing DNA, gzip takes 29.2MB and bzip2 takes 27.3MB. Let's take 30MB for an approximation. 30MB/100,000,000 = 30 * (1,048,576 * 8)/100,000,000 bits = 2.52 bits.
+**_A:_** When it comes to storing DNA, gzip takes 29.2MB and bzip2 takes 27.3MB. Let's take 30MB for an approximation.
+30MB/100,000,000 = 30 * (1,048,576 * 8)/100,000,000 bits = 2.52 bits.
 
-When it comes to storing protein, gzip takes 63.5MB and bzip2 takes 59.8MB. Let's take 60MB for an approximation. 60/MB/100,000,000 = 60 * (1,048,576 * 8)/100,000,000 bits = 5.04 bits.
+When it comes to storing protein, gzip takes 63.5MB and bzip2 takes 59.8MB. Let's take 60MB for an approximation.
+60/MB/100,000,000 = 60 * (1,048,576 * 8)/100,000,000 bits = 5.04 bits.
 
 <br>
 
 **_Q:_** Are gzip and bzip2 performing well on DNA and proteins?
 
-**_A:_** In terms of compression ratio, bzip2 has a relatively good performance while gzip is the worst among the four compression algorithms. Arithmetic compress has the best compression rate. In terms of speed, they are both faster than arithmetic compress. However, pbzip2 is much faster than the two. In summary, they have moderate performances on DNA and proteins.
+**_A:_** In terms of compression ratio, bzip2 has a relatively good performance while gzip is the worst among the four compression algorithms. Arithmetic compress has the best compression rate.
+In terms of speed, they are both faster than arithmetic compress. However, pbzip2 is much faster than the two.
+In summary, they have moderate performances on DNA and proteins.
 <br>
 
 
@@ -175,7 +177,7 @@ handle = Entrez.esearch(db = 'nucleotide',       # search 10 results and save th
                         retmax = 10)
 ```
 
-After checking that the results are proper, we saved the information into a dictionary:
+After checking the validity of results, we saved the information into a dictionary:
 ```
 dict_gp120 = dict(zip(list_name, list_seq))
 ```
@@ -201,17 +203,20 @@ The real data is compressed using the same methods and the information can be su
 
 **_Q:_**  A priori, do you expect to achieve better or worse compression here than random data? Why?
 
-**_A:_** We expected the compression to be better than random data. As there is more pattern to be found
+**_A:_** We expected the compression to be better than random data since there are more patterns to be found.
 
 **_Q:_**  How does the compression ratio of this file compare to random data?
 
-**_A:_** The compression ratio was 29.2%, 27.3%, and 25% for random data. gzip makes use of Huffman. Real sequence will have different frequency for different base. This makes sense. bzip2 uses Burrows-Wheeler. Real sequences have more patterns to be found, therefore it should perform better on real data as well. However, arithmetic compress performs worse on real data.
+**_A:_** The compression ratio was respectively 29.2%, 27.3%, and 25% for random data.
+gzip makes use of Huffman. Real sequences will have different frequency for different bases which is why it performs better on these sequences.
+bzip2 uses Burrows-Wheeler. Similarly, since real sequences have more patterns to be found, the algorithm performs better on real data as well.
+However, arithmetic compress performs worse on real data.
 
 ## Estimating compression of 1000 terabytes
 
 The best performance we achieved was 0:00.10 for 100MB using pbzip2. For 100 TB, it would require 0.1s*10^6 = 100,000 seconds = 27.8 hours. Therefore, the key limit here is time. Furthermore, the differences between compression ratio for the four algorithms are not huge.
 
-Assume that each data can only be processed using one computer (otherwise a large number of computing power can certainly compress all the data), we use pbzip2 for all the data.
+Assume that each data can only be processed using one computer (otherwise a large number of computing power can certainly compress all the data). We use pbzip2 for all the data.
 
 80% re-sequencing of genomes and plasmid: One computer can compress in a day (86400 seconds/0.1 second) *100MB = 86.4TB <800TB. The reduction in data in 24 hours: (86400 seconds/0.1 second) *100MB * (1-20.12%) = 69TB
 
@@ -222,4 +227,4 @@ Assume that each data can only be processed using one computer (otherwise a larg
 Therefore, the total reduction is 49TB + 4.2TB = 53.2TB.
 
 The money saved per day: $50/TB * 53.2TB = $2660
-In a year the bonus would be 365*$2600 = $970,900
+In a year the bonus would be 365*$2600 = $970,900.
