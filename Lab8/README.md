@@ -84,7 +84,7 @@ Here, we do not observe the presence of contigs with coverage an integer multipl
 
 ## Identifying the taxon from which the genome originated
 
-To identify the genome origin we focussed on the hypervariable regions of the 16S ribosomal RNA subunit. We ran the following commands using Python to extrate the location of all rRNA genes and then extract those relative to the 16S ribosomal unit.
+To identify the genome origin we focused on the hypervariable regions of the 16S ribosomal RNA subunit. We ran the following commands using Python to extrate the location of all rRNA genes and then extract those relative to the 16S ribosomal unit.
 
 ```
 Input:
@@ -141,4 +141,37 @@ domain Bacteria  (0/20/3065908)
 
 The S_ab score returned for all the results is of 1 which suggests the provided reads come from the Pseudomas genus.
 
-TO BE CONTINUED...
+
+## Genome annotation and Research
+
+
+### Summary of Pseudomonas aeruginosa
+
+In this part we try to investigate the CRISPR system of our genome, assuming that the genome comes from Pseudomonas aeruginosa. The pathogenic bacterial species is the cause of several infections and diseases in both animals and plants. Most famously, it is responsible for many of the nosocomial infections. The pathogen is perceived by its ubiquity and its antibiotic resistance mechanisms. It is also opportunistic, meaning that infection often occurs during ongoing conditions like cystic fibrosis and traumatic burns. Suppression of the CRISPR-Cas defence mechanisms of the pathogen would lead to its vulnerability to phage therapy. Therefore, investigating CRISPR system of Pseudomonas aeruginosa is of vital importance.
+
+
+### Summary of CRISPR/Cas9
+
+CRISPR (clustered regularly interspaced short palindromic repeats) is a series of DNA sequences found within prokaryotic organisms that play a vital role in their antiviral defense system. Cas9 (CRISPR-associated 9) is an enzyme that recognize and cleave complementary sequences using CRISPR as a guide. CRISPR/Cas9 is a technology that can be used to edit genes. The technology is based on CRISPR sequence and Cas9 enzyme and is a big advancement in drug development and treatment research.
+
+
+### CRISPR control of virulence in  Pseudomonas Aeruginosa
+
+
+CRISPR is crucial in bacteria's adaptive immune system. A recent paper suggests that type I-F immune system in Pseudomonas aeruginosa also plays a role in its post-transcriptional regulation of virulence.
+
+
+This is how CRISPR in Pseudomonas Aeruginosa works: each crRNA binds with four different Cas proteins, forming Csy complexes (Csy1-4) or Cascade I-F. The Csy complex then binds to foreign DNA. This process is initialted by the detection of (G-C/G-C) base pairs on the DNA target. This sequence is called protospacer and the consecutive pairs are refered to as the Protospacer Adjacent Motif (PAM). Studies before has shown that binding of the first 8 bases of crRNA and PAM is cruitial for high-affinity binding.
+
+
+
+
+#### CRISPR interactions with QS genes
+
+
+
+References:
+
+Azam, Mohd W., and Asad U. Khan. "Updates on the pathogenicity status of Pseudomonas aeruginosa." Drug discovery today (2018).
+
+Wiedenheft, Blake, and Joseph Bondy-Denomy. "CRISPR control of virulence in Pseudomonas aeruginosa." Cell research 27.2 (2017): 163.
