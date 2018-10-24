@@ -152,7 +152,6 @@ Although Ribosomal database project's SeqMatch tool only led us to the genus lev
 
 Pseudomonas fluorescens is a type of rod-shaped bacterium. It has multiple flagella and undergoes versatile metabolism. It usually inhabits in soil and water. Some strains of Pseudomonas Flurescens are capable of using nitrate instead of oxygen during cellular respiration. One thing P. Flurescens is famous for is its ability to produce mupirocin. The antibiotic can be used to treat multiple skin, ear, and eye disorder. It is worth pointing out that fluorescent pseudomonads' ability to degrade toxic chemicals and their helpful interactions with plants have attracted many researchers. Three of its strains SBW25, Pf-5 and PfO-1 have been sequenced (PfO-1 is the one we're dealing with here).
 
-[image insert]
 
 ### Iron Metabolism Summary
 
@@ -171,9 +170,27 @@ In RAST annotation, Iron acquisition and metabolism includes four categories: Si
 
 ![RAST annotation](https://github.com/bijiuni/compu_bio/blob/master/Lab8/2.JPG)
 
+The first paper we cited investigated the effect of pyoverdines synthesized by pseudomonas fluorescens on plants' defense system in iron-deficient conditions. When iron is limited, pyoverdines, the ferric iron chelators are excreted by pseudomonas fluorescens to acquire iron in the soil. Pyoverdines are not always harmful for plants' health, they may even ameliorate plant growth. 
+
+The paper investigated the effects of pyoverdine from Pseudomonas fluorescens on Arabidopsis (Arabidopsis thaliana) under iron-sufficient or iron-deficient conditions. The paper found that the favorable effect of pyoverdine for plants under iron-deficient conditions was damaged in iron-regulated transporter1 and ferric chelate reductase2 knockout mutants. They also identified the reason why this is prioritized over immuniy. The transcription factor HBI1 was over expressed. It is a key node for the cross talk between growth and immunity. 
+
+However, in order to mimick the situation where pseudomnas fluorescens excreting pyoverdine, the researchers used a compound called apo-pyoverdine, the iron-free structure of pyvoerdine. We think that this introduce additional variables. Furthermore, it is not useful for investigating the real interactions between pseudomnas fluorescens and arabidopsis. The experiment can be improved by identifying the gene that encodes pyoverdine and engineering the specific gene.
+
+Pyvordines are siderophores excreted by bacteria. From RAST results, we can identify the gene easily. Below is a summary of the subsystem Siderophore Achromobactin of pseudomonas fluorescens.
+
+![siderophore subsystem](https://github.com/bijiuni/compu_bio/blob/master/Lab8/5.JPG)
+
+
+<br>
+The second paper we cited investigated gallium's disruption of Pseudomonas aeruginosa's iron metabolism. It has been introduced in the previous paragraphs that Fe metabolism is a key vulnerability of bacteria and is critical in the pathogenesis of infections. Since gallium is chemically similar to iron, it can substitute for Fe in some situations and suppress processes that depend on Fe. The paper found that Ga inhibits Pseudomonas aeruginosa growth.
+
+However, the author did not identify the specifc paths or processes that Ga inhibits. Since both Pseudomonas aeruginosa's and Pseudomonas Fluorescens's genome is already known, we think it would be a good idea to compare Ga's effect on the two similar organisms. By mapping the effect to the gene expression difference, both the inhibition process and iron metabolism can be better understood.
+
+![Both organisms have the same iron acquisition in Streptococcus subsystem](https://github.com/bijiuni/compu_bio/blob/master/Lab8/6.JPG)
+
 
 #### References:
 
-Kaneko, Yukihiro, et al. "The transition metal gallium disrupts Pseudomonas aeruginosa iron metabolism and has antimicrobial and antibiofilm activity." The Journal of clinical investigation 117.4 (2007): 877-888.
+Trapet, Pauline, et al. "The Pseudomonas fluorescens siderophore pyoverdine weakens Arabidopsis thaliana defense in favour of growth in iron-deficient conditions." plant physiology (2016): pp-01537.
 
-Meyer, J. M., P. Azelvandre, and C. Georges. "Iron metabolism in Pseudomonas: salicylic acid, a siderophore of Pseudomonas fluorescens CHAO." BioFactors (Oxford, England) 4.1 (1992): 23-27.
+Kaneko, Yukihiro, et al. "The transition metal gallium disrupts Pseudomonas aeruginosa iron metabolism and has antimicrobial and antibiofilm activity." The Journal of clinical investigation 117.4 (2007): 877-888.
