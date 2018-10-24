@@ -73,7 +73,7 @@ Note: additional output lines have been removed for clarity.
 
 The coverage of contigs was plotted in iPython.
 
-[image insert]
+![Coverage plot](https://github.com/bijiuni/compu_bio/blob/master/Lab8/4.JPG)
 
 *__Q:__* Is coverage uniformly distributed? Does it look Gaussian? Is it bimodal or trimodal? What explains the presence of contigs with coverage an integer multiple of the mean coverage?
 
