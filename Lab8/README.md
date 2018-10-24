@@ -47,7 +47,7 @@ N100 = 128, n = 174
 N_count = 20
 Gaps = 2
 ```
-The numbers are rather self-explanatory. N50 = 234690, n = 11 means 50% of the assembly is contained in the 11 longest reads.
+The numbers are rather self-explanatory. N50 = 234690, n = 11 means 50% of the assembly is contained in the 11 longest read.
 
 *__Q:__* Why is N50 is useful statistic to calculate? Why not just list the mean or median contig length? In your assembly, are scaffolds longer than contigs, or are scaffolds approximately equal to contigs?
 
@@ -71,9 +71,9 @@ be131-09@meowth:~/GIT/Computational-Biology/Lab8$ grep '>' contigs.fasta
 ```
 Note: additional output lines have been removed for clarity.
 
-The coverage of contigs was plotted in iPython.
+A histogram of contigs coverage was plotted in iPython (length of coverage in x-axis, number of occurences in y-axis).
 
-![Coverage plot](https://github.com/bijiuni/compu_bio/blob/master/Lab8/4.JPG)
+![Coverage plot](4.JPG)
 
 *__Q:__* Is coverage uniformly distributed? Does it look Gaussian? Is it bimodal or trimodal? What explains the presence of contigs with coverage an integer multiple of the mean coverage?
 
@@ -146,7 +146,7 @@ The S_ab score returned for all the results is of 1 which suggests the provided 
 
 Although Ribosomal database project's SeqMatch tool only led us to the genus level of the genome, we used closest neighbor tool in RAST to infer the species. We assumed that the organism is Pseudomonas fluorescens PfO-1 based on the RAST result shown below. We focused on the iron metabolism of Pseudomonas Fluorescens. Specifically, how the metal gallium would disrupt this process.
 
-![neighbors](https://github.com/bijiuni/compu_bio/blob/master/Lab8/3.JPG)
+![neighbors](3.JPG)
 
 ### Pseudomonas Fluorescens Summary 
 
@@ -164,11 +164,11 @@ Fe metabolism is a significant vulnerability of infecting bacteria both because 
 
 Multiple genes are involved in the iron metabolism of pseudomonas fluorescens. For example, in Basys library, the gene BASYS00277.1 encodes NDH-1, which shuttles electrons from NADH, via FMN and iron- sulfur (Fe-S) centers, to quinones in the respiratory chain.
 
-![Basys library](https://github.com/bijiuni/compu_bio/blob/master/Lab8/1.JPG)
+![Basys library](1.JPG)
 
 In RAST annotation, Iron acquisition and metabolism includes four categories: Siderophore Achromobactin, Iron siderophore sensor & receptor system, Iron acquisition in Streptococcus, and  Encapsulating protein for DyP-type peroxidase and ferritin-like protein oligomers.
 
-![RAST annotation](https://github.com/bijiuni/compu_bio/blob/master/Lab8/2.JPG)
+![RAST annotation](2.JPG)
 
 The first paper we cited investigated the effect of pyoverdines synthesized by pseudomonas fluorescens on plants' defense system in iron-deficient conditions. When iron is limited, pyoverdines, the ferric iron chelators are excreted by pseudomonas fluorescens to acquire iron in the soil. Pyoverdines are not always harmful for plants' health, they may even ameliorate plant growth. 
 
@@ -178,7 +178,7 @@ However, in order to mimick the situation where pseudomnas fluorescens excreting
 
 Pyvordines are siderophores excreted by bacteria. From RAST results, we can identify the gene easily. Below is a summary of the subsystem Siderophore Achromobactin of pseudomonas fluorescens.
 
-![siderophore subsystem](https://github.com/bijiuni/compu_bio/blob/master/Lab8/5.JPG)
+![siderophore subsystem](5.JPG)
 
 
 <br>
@@ -186,11 +186,11 @@ The second paper we cited investigated gallium's disruption of Pseudomonas aerug
 
 However, the author did not identify the specifc paths or processes that Ga inhibits. Since both Pseudomonas aeruginosa's and Pseudomonas Fluorescens's genome is already known, we think it would be a good idea to compare Ga's effect on the two similar organisms. By mapping the effect to the gene expression difference, both the inhibition process and iron metabolism can be better understood.
 
-![Both organisms have the same iron acquisition in Streptococcus subsystem](https://github.com/bijiuni/compu_bio/blob/master/Lab8/6.JPG)
+![Both organisms have the same iron acquisition in Streptococcus subsystem](6.JPG)
 
 
 #### References:
 
-Trapet, Pauline, et al. "The Pseudomonas fluorescens siderophore pyoverdine weakens Arabidopsis thaliana defense in favour of growth in iron-deficient conditions." plant physiology (2016): pp-01537.
+Trapet, Pauline, et al. _The Pseudomonas fluorescens siderophore pyoverdine weakens Arabidopsis thaliana defense in favour of growth in iron-deficient conditions._ Plant Physiology. 2016;171(1):675-693; DOI: [10.1104/pp.15.01537]
 
-Kaneko, Yukihiro, et al. "The transition metal gallium disrupts Pseudomonas aeruginosa iron metabolism and has antimicrobial and antibiofilm activity." The Journal of clinical investigation 117.4 (2007): 877-888.
+Kaneko Y, Thoendel M, Olakanmi O, Britigan BE, Singh PK. _The transition metal gallium disrupts Pseudomonas aeruginosa iron metabolism and has antimicrobial and antibiofilm activity._ J Clin Invest. 2007;117(4):877-88; DOI: [10.1172/JCI30783]
