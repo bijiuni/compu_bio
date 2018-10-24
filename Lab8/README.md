@@ -73,7 +73,7 @@ Note: additional output lines have been removed for clarity.
 
 The coverage of contigs was plotted in iPython.
 
-INSERT IMAGE HERE
+[image insert]
 
 *__Q:__* Is coverage uniformly distributed? Does it look Gaussian? Is it bimodal or trimodal? What explains the presence of contigs with coverage an integer multiple of the mean coverage?
 
@@ -144,34 +144,36 @@ The S_ab score returned for all the results is of 1 which suggests the provided 
 
 ## Genome annotation and Research
 
+Although Ribosomal database project's SeqMatch tool only led us to the genus level of the genome, we used closest neighbor tool in RAST to infer the species. We assumed that the organism is Pseudomonas fluorescens PfO-1 based on the RAST result shown below. We focused on the iron metabolism of Pseudomonas Fluorescens. Specifically, how the metal gallium would disrupt this process.
 
-### Summary of Pseudomonas aeruginosa
+[neighbors](https://github.com/bijiuni/compu_bio/blob/master/Lab8/3.JPG)
 
-In this part we try to investigate the CRISPR system of our genome, assuming that the genome comes from Pseudomonas aeruginosa. The pathogenic bacterial species is the cause of several infections and diseases in both animals and plants. Most famously, it is responsible for many of the nosocomial infections. The pathogen is perceived by its ubiquity and its antibiotic resistance mechanisms. It is also opportunistic, meaning that infection often occurs during ongoing conditions like cystic fibrosis and traumatic burns. Suppression of the CRISPR-Cas defence mechanisms of the pathogen would lead to its vulnerability to phage therapy. Therefore, investigating CRISPR system of Pseudomonas aeruginosa is of vital importance.
+### Pseudomonas Fluorescens Summary 
 
+Pseudomonas fluorescens is a type of rod-shaped bacterium. It has multiple flagella and undergoes versatile metabolism. It usually inhabits in soil and water. Some strains of Pseudomonas Flurescens are capable of using nitrate instead of oxygen during cellular respiration. One thing P. Flurescens is famous for is its ability to produce mupirocin. The antibiotic can be used to treat multiple skin, ear, and eye disorder. It is worth pointing out that fluorescent pseudomonads' ability to degrade toxic chemicals and their helpful interactions with plants have attracted many researchers. Three of its strains SBW25, Pf-5 and PfO-1 have been sequenced (PfO-1 is the one we're dealing with here).
 
-### Summary of CRISPR/Cas9
+[image insert]
 
-CRISPR (clustered regularly interspaced short palindromic repeats) is a series of DNA sequences found within prokaryotic organisms that play a vital role in their antiviral defense system. Cas9 (CRISPR-associated 9) is an enzyme that recognize and cleave complementary sequences using CRISPR as a guide. CRISPR/Cas9 is a technology that can be used to edit genes. The technology is based on CRISPR sequence and Cas9 enzyme and is a big advancement in drug development and treatment research.
+### Iron Metabolism Summary
 
-
-### CRISPR control of virulence in  Pseudomonas Aeruginosa
-
-
-CRISPR is crucial in bacteria's adaptive immune system. A recent paper suggests that type I-F immune system in Pseudomonas aeruginosa also plays a role in its post-transcriptional regulation of virulence.
-
-
-This is how CRISPR in Pseudomonas Aeruginosa works: each crRNA binds with four different Cas proteins, forming Csy complexes (Csy1-4) or Cascade I-F. The Csy complex then binds to foreign DNA. This process is initialted by the detection of (G-C/G-C) base pairs on the DNA target. This sequence is called protospacer and the consecutive pairs are refered to as the Protospacer Adjacent Motif (PAM). Studies before has shown that binding of the first 8 bases of crRNA and PAM is cruitial for high-affinity binding.
+Fe metabolism is a significant vulnerability of infecting bacteria both because organisms require Fe for growth, and it is critical in the pathogenesis of infections. To combat invading bacteria, plants or animals usually have mechanisms to withold iron. Some even use Nramp1 (a protein) to generate reactive oxygen species to kill the pathogens. Under iron starvation, Pseudomonas fluorescens produces a second iron-chelating compound which was purified and identified by spectroscopy, HPLC and 1H-NMR to be salicylic acid.
 
 
 
-
-#### CRISPR interactions with QS genes
-
+### Iron Metabolism of Pseudomonas Fluorescens
 
 
-References:
+Multiple genes are involved in the iron metabolism of pseudomonas fluorescens. For example, in Basys library, the gene BASYS00277.1 encodes NDH-1, which shuttles electrons from NADH, via FMN and iron- sulfur (Fe-S) centers, to quinones in the respiratory chain.
 
-Azam, Mohd W., and Asad U. Khan. "Updates on the pathogenicity status of Pseudomonas aeruginosa." Drug discovery today (2018).
+[Basys library](https://github.com/bijiuni/compu_bio/blob/master/Lab8/1.JPG)
 
-Wiedenheft, Blake, and Joseph Bondy-Denomy. "CRISPR control of virulence in Pseudomonas aeruginosa." Cell research 27.2 (2017): 163.
+In RAST annotation, Iron acquisition and metabolism includes four categories: Siderophore Achromobactin, Iron siderophore sensor & receptor system, Iron acquisition in Streptococcus, and  Encapsulating protein for DyP-type peroxidase and ferritin-like protein oligomers.
+
+[RAST annotation](https://github.com/bijiuni/compu_bio/blob/master/Lab8/2.JPG)
+
+
+#### References:
+
+Kaneko, Yukihiro, et al. "The transition metal gallium disrupts Pseudomonas aeruginosa iron metabolism and has antimicrobial and antibiofilm activity." The Journal of clinical investigation 117.4 (2007): 877-888.
+
+Meyer, J. M., P. Azelvandre, and C. Georges. "Iron metabolism in Pseudomonas: salicylic acid, a siderophore of Pseudomonas fluorescens CHAO." BioFactors (Oxford, England) 4.1 (1992): 23-27.
