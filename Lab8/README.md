@@ -73,7 +73,7 @@ Note: additional output lines have been removed for clarity.
 
 A histogram of contigs coverage was plotted in iPython (length of coverage in x-axis, number of occurences in y-axis).
 
-![Coverage plot](https://github.com/bijiuni/compu_bio/blob/master/Lab8/4.JPG)
+![Coverage plot](4.JPG)
 
 *__Q:__* Is coverage uniformly distributed? Does it look Gaussian? Is it bimodal or trimodal? What explains the presence of contigs with coverage an integer multiple of the mean coverage?
 
@@ -146,7 +146,7 @@ The S_ab score returned for all the results is of 1 which suggests the provided 
 
 Although Ribosomal database project's SeqMatch tool only led us to the genus level of the genome, we used closest neighbor tool in RAST to infer the species. We assumed that the organism is Pseudomonas fluorescens PfO-1 based on the RAST result shown below. We focused on the iron metabolism of Pseudomonas Fluorescens. Specifically, how the metal gallium would disrupt this process.
 
-![neighbors](https://github.com/bijiuni/compu_bio/blob/master/Lab8/3.JPG)
+![neighbors](3.JPG)
 
 ### Pseudomonas Fluorescens Summary 
 
@@ -164,11 +164,11 @@ Fe metabolism is a significant vulnerability of infecting bacteria both because 
 
 Multiple genes are involved in the iron metabolism of pseudomonas fluorescens. For example, in Basys library, the gene BASYS00277.1 encodes NDH-1, which shuttles electrons from NADH, via FMN and iron- sulfur (Fe-S) centers, to quinones in the respiratory chain.
 
-![Basys library](https://github.com/bijiuni/compu_bio/blob/master/Lab8/1.JPG)
+![Basys library](1.JPG)
 
 In RAST annotation, Iron acquisition and metabolism includes four categories: Siderophore Achromobactin, Iron siderophore sensor & receptor system, Iron acquisition in Streptococcus, and  Encapsulating protein for DyP-type peroxidase and ferritin-like protein oligomers.
 
-![RAST annotation](https://github.com/bijiuni/compu_bio/blob/master/Lab8/2.JPG)
+![RAST annotation](2.JPG)
 
 The first paper we cited investigated the effect of pyoverdines synthesized by pseudomonas fluorescens on plants' defense system in iron-deficient conditions. When iron is limited, pyoverdines, the ferric iron chelators are excreted by pseudomonas fluorescens to acquire iron in the soil. Pyoverdines are not always harmful for plants' health, they may even ameliorate plant growth. 
 
@@ -178,7 +178,7 @@ However, in order to mimick the situation where pseudomnas fluorescens excreting
 
 Pyvordines are siderophores excreted by bacteria. From RAST results, we can identify the gene easily. Below is a summary of the subsystem Siderophore Achromobactin of pseudomonas fluorescens.
 
-![siderophore subsystem](https://github.com/bijiuni/compu_bio/blob/master/Lab8/5.JPG)
+![siderophore subsystem](5.JPG)
 
 
 <br>
