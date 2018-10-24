@@ -186,11 +186,11 @@ The second paper we cited investigated gallium's disruption of Pseudomonas aerug
 
 However, the author did not identify the specifc paths or processes that Ga inhibits. Since both Pseudomonas aeruginosa's and Pseudomonas Fluorescens's genome is already known, we think it would be a good idea to compare Ga's effect on the two similar organisms. By mapping the effect to the gene expression difference, both the inhibition process and iron metabolism can be better understood.
 
-![Both organisms have the same iron acquisition in Streptococcus subsystem](https://github.com/bijiuni/compu_bio/blob/master/Lab8/6.JPG)
+![Both organisms have the same iron acquisition in Streptococcus subsystem](6.JPG)
 
 
 #### References:
 
-Trapet, Pauline, et al. "The Pseudomonas fluorescens siderophore pyoverdine weakens Arabidopsis thaliana defense in favour of growth in iron-deficient conditions." plant physiology (2016): pp-01537.
+Trapet, Pauline, et al. _The Pseudomonas fluorescens siderophore pyoverdine weakens Arabidopsis thaliana defense in favour of growth in iron-deficient conditions._ Plant Physiology. 2016;171(1):675-693; DOI: [10.1104/pp.15.01537]
 
-Kaneko, Yukihiro, et al. "The transition metal gallium disrupts Pseudomonas aeruginosa iron metabolism and has antimicrobial and antibiofilm activity." The Journal of clinical investigation 117.4 (2007): 877-888.
+Kaneko Y, Thoendel M, Olakanmi O, Britigan BE, Singh PK. _The transition metal gallium disrupts Pseudomonas aeruginosa iron metabolism and has antimicrobial and antibiofilm activity._ J Clin Invest. 2007;117(4):877-88; DOI: [10.1172/JCI30783]
