@@ -146,7 +146,7 @@ The S_ab score returned for all the results is of 1 which suggests the provided 
 
 Although Ribosomal database project's SeqMatch tool only led us to the genus level of the genome, we used closest neighbor tool in RAST to infer the species. We assumed that the organism is Pseudomonas fluorescens PfO-1 based on the RAST result shown below. We focused on the iron metabolism of Pseudomonas Fluorescens. Specifically, how the metal gallium would disrupt this process.
 
-[neighbors](https://github.com/bijiuni/compu_bio/blob/master/Lab8/3.JPG)
+![neighbors](https://github.com/bijiuni/compu_bio/blob/master/Lab8/3.JPG)
 
 ### Pseudomonas Fluorescens Summary 
 
@@ -165,11 +165,11 @@ Fe metabolism is a significant vulnerability of infecting bacteria both because 
 
 Multiple genes are involved in the iron metabolism of pseudomonas fluorescens. For example, in Basys library, the gene BASYS00277.1 encodes NDH-1, which shuttles electrons from NADH, via FMN and iron- sulfur (Fe-S) centers, to quinones in the respiratory chain.
 
-[Basys library](https://github.com/bijiuni/compu_bio/blob/master/Lab8/1.JPG)
+![Basys library](https://github.com/bijiuni/compu_bio/blob/master/Lab8/1.JPG)
 
 In RAST annotation, Iron acquisition and metabolism includes four categories: Siderophore Achromobactin, Iron siderophore sensor & receptor system, Iron acquisition in Streptococcus, and  Encapsulating protein for DyP-type peroxidase and ferritin-like protein oligomers.
 
-[RAST annotation](https://github.com/bijiuni/compu_bio/blob/master/Lab8/2.JPG)
+![RAST annotation](https://github.com/bijiuni/compu_bio/blob/master/Lab8/2.JPG)
 
 
 #### References:
