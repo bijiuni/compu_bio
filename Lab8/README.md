@@ -47,7 +47,7 @@ N100 = 128, n = 174
 N_count = 20
 Gaps = 2
 ```
-The numbers are rather self-explanatory. N50 = 234690, n = 11 means 50% of the assembly is contained in the 11 longest reads.
+The numbers are rather self-explanatory. N50 = 234690, n = 11 means 50% of the assembly is contained in the 11 longest read.
 
 *__Q:__* Why is N50 is useful statistic to calculate? Why not just list the mean or median contig length? In your assembly, are scaffolds longer than contigs, or are scaffolds approximately equal to contigs?
 
@@ -71,7 +71,7 @@ be131-09@meowth:~/GIT/Computational-Biology/Lab8$ grep '>' contigs.fasta
 ```
 Note: additional output lines have been removed for clarity.
 
-The coverage of contigs was plotted in iPython.
+A histogram of contigs coverage was plotted in iPython (length of coverage in x-axis, number of occurences in y-axis).
 
 ![Coverage plot](https://github.com/bijiuni/compu_bio/blob/master/Lab8/4.JPG)
 
