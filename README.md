@@ -2,7 +2,7 @@
 
 ## A quick summary of the contents:
 
-* Lab1: Preperations
+* Lab1: Preparations
 <br>
 
 * [Lab2](Lab2): Analzying sequences, generating	phylogenetic trees, and identifying sequences using BLAST
